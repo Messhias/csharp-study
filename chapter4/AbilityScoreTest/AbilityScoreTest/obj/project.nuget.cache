@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "w3sPv8jINwY=",
+  "success": true,
+  "projectFilePath": "/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/AbilityScoreTest/AbilityScoreTest.csproj",
+  "expectedPackageFiles": [
+    "/Users/fabio/.nuget/packages/microsoft.netcore.app.ref/8.0.18/microsoft.netcore.app.ref.8.0.18.nupkg.sha512",
+    "/Users/fabio/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.18/microsoft.aspnetcore.app.ref.8.0.18.nupkg.sha512",
+    "/Users/fabio/.nuget/packages/microsoft.netcore.app.host.osx-arm64/8.0.18/microsoft.netcore.app.host.osx-arm64.8.0.18.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,14 @@
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/AbilityScoreTest/bin/Debug/net8.0/AbilityScoreTest
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/AbilityScoreTest/bin/Debug/net8.0/AbilityScoreTest.deps.json
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/AbilityScoreTest/bin/Debug/net8.0/AbilityScoreTest.runtimeconfig.json
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/AbilityScoreTest/bin/Debug/net8.0/AbilityScoreTest.dll
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/AbilityScoreTest/bin/Debug/net8.0/AbilityScoreTest.pdb
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/AbilityScoreTest/obj/Debug/net8.0/AbilityScoreTest.GeneratedMSBuildEditorConfig.editorconfig
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/AbilityScoreTest/obj/Debug/net8.0/AbilityScoreTest.AssemblyInfoInputs.cache
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/AbilityScoreTest/obj/Debug/net8.0/AbilityScoreTest.AssemblyInfo.cs
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/AbilityScoreTest/obj/Debug/net8.0/AbilityScoreTest.csproj.CoreCompileInputs.cache
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/AbilityScoreTest/obj/Debug/net8.0/AbilityScoreTest.dll
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/AbilityScoreTest/obj/Debug/net8.0/refint/AbilityScoreTest.dll
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/AbilityScoreTest/obj/Debug/net8.0/AbilityScoreTest.pdb
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/AbilityScoreTest/obj/Debug/net8.0/AbilityScoreTest.genruntimeconfig.cache
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/AbilityScoreTest/obj/Debug/net8.0/ref/AbilityScoreTest.dll

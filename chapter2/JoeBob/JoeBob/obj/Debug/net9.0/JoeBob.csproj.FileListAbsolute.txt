@@ -1,0 +1,14 @@
+/Users/fabio/Documents/projects/C#/head-first/chapter2/JoeBob/JoeBob/bin/Debug/net9.0/JoeBob
+/Users/fabio/Documents/projects/C#/head-first/chapter2/JoeBob/JoeBob/bin/Debug/net9.0/JoeBob.deps.json
+/Users/fabio/Documents/projects/C#/head-first/chapter2/JoeBob/JoeBob/bin/Debug/net9.0/JoeBob.runtimeconfig.json
+/Users/fabio/Documents/projects/C#/head-first/chapter2/JoeBob/JoeBob/bin/Debug/net9.0/JoeBob.dll
+/Users/fabio/Documents/projects/C#/head-first/chapter2/JoeBob/JoeBob/bin/Debug/net9.0/JoeBob.pdb
+/Users/fabio/Documents/projects/C#/head-first/chapter2/JoeBob/JoeBob/obj/Debug/net9.0/JoeBob.GeneratedMSBuildEditorConfig.editorconfig
+/Users/fabio/Documents/projects/C#/head-first/chapter2/JoeBob/JoeBob/obj/Debug/net9.0/JoeBob.AssemblyInfoInputs.cache
+/Users/fabio/Documents/projects/C#/head-first/chapter2/JoeBob/JoeBob/obj/Debug/net9.0/JoeBob.AssemblyInfo.cs
+/Users/fabio/Documents/projects/C#/head-first/chapter2/JoeBob/JoeBob/obj/Debug/net9.0/JoeBob.csproj.CoreCompileInputs.cache
+/Users/fabio/Documents/projects/C#/head-first/chapter2/JoeBob/JoeBob/obj/Debug/net9.0/JoeBob.dll
+/Users/fabio/Documents/projects/C#/head-first/chapter2/JoeBob/JoeBob/obj/Debug/net9.0/refint/JoeBob.dll
+/Users/fabio/Documents/projects/C#/head-first/chapter2/JoeBob/JoeBob/obj/Debug/net9.0/JoeBob.pdb
+/Users/fabio/Documents/projects/C#/head-first/chapter2/JoeBob/JoeBob/obj/Debug/net9.0/JoeBob.genruntimeconfig.cache
+/Users/fabio/Documents/projects/C#/head-first/chapter2/JoeBob/JoeBob/obj/Debug/net9.0/ref/JoeBob.dll

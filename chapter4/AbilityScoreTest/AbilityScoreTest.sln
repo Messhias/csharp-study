@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbilityScoreTest", "AbilityScoreTest\AbilityScoreTest.csproj", "{48191448-B4E1-4C6A-8C6C-28078503E639}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{8AD984F9-5BF9-4B8B-A520-41F011788344}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaintBall", "PaintBall\PaintBall.csproj", "{EB2C31B9-FC0B-4FCA-ADD2-C2C5841C3DD8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{48191448-B4E1-4C6A-8C6C-28078503E639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48191448-B4E1-4C6A-8C6C-28078503E639}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48191448-B4E1-4C6A-8C6C-28078503E639}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48191448-B4E1-4C6A-8C6C-28078503E639}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AD984F9-5BF9-4B8B-A520-41F011788344}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AD984F9-5BF9-4B8B-A520-41F011788344}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AD984F9-5BF9-4B8B-A520-41F011788344}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AD984F9-5BF9-4B8B-A520-41F011788344}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB2C31B9-FC0B-4FCA-ADD2-C2C5841C3DD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB2C31B9-FC0B-4FCA-ADD2-C2C5841C3DD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB2C31B9-FC0B-4FCA-ADD2-C2C5841C3DD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB2C31B9-FC0B-4FCA-ADD2-C2C5841C3DD8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

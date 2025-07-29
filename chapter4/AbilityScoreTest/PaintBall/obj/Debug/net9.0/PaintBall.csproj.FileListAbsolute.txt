@@ -1,0 +1,14 @@
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/PaintBall/bin/Debug/net9.0/PaintBall
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/PaintBall/bin/Debug/net9.0/PaintBall.deps.json
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/PaintBall/bin/Debug/net9.0/PaintBall.runtimeconfig.json
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/PaintBall/bin/Debug/net9.0/PaintBall.dll
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/PaintBall/bin/Debug/net9.0/PaintBall.pdb
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/PaintBall/obj/Debug/net9.0/PaintBall.GeneratedMSBuildEditorConfig.editorconfig
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/PaintBall/obj/Debug/net9.0/PaintBall.AssemblyInfoInputs.cache
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/PaintBall/obj/Debug/net9.0/PaintBall.AssemblyInfo.cs
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/PaintBall/obj/Debug/net9.0/PaintBall.csproj.CoreCompileInputs.cache
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/PaintBall/obj/Debug/net9.0/PaintBall.dll
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/PaintBall/obj/Debug/net9.0/refint/PaintBall.dll
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/PaintBall/obj/Debug/net9.0/PaintBall.pdb
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/PaintBall/obj/Debug/net9.0/PaintBall.genruntimeconfig.cache
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/PaintBall/obj/Debug/net9.0/ref/PaintBall.dll

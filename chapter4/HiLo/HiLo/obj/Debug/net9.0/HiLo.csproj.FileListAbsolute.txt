@@ -1,0 +1,14 @@
+/Users/fabio/Documents/projects/C#/head-first/chapter4/HiLo/HiLo/obj/Debug/net9.0/HiLo.GeneratedMSBuildEditorConfig.editorconfig
+/Users/fabio/Documents/projects/C#/head-first/chapter4/HiLo/HiLo/obj/Debug/net9.0/HiLo.AssemblyInfoInputs.cache
+/Users/fabio/Documents/projects/C#/head-first/chapter4/HiLo/HiLo/obj/Debug/net9.0/HiLo.AssemblyInfo.cs
+/Users/fabio/Documents/projects/C#/head-first/chapter4/HiLo/HiLo/obj/Debug/net9.0/HiLo.csproj.CoreCompileInputs.cache
+/Users/fabio/Documents/projects/C#/head-first/chapter4/HiLo/HiLo/bin/Debug/net9.0/HiLo
+/Users/fabio/Documents/projects/C#/head-first/chapter4/HiLo/HiLo/bin/Debug/net9.0/HiLo.deps.json
+/Users/fabio/Documents/projects/C#/head-first/chapter4/HiLo/HiLo/bin/Debug/net9.0/HiLo.runtimeconfig.json
+/Users/fabio/Documents/projects/C#/head-first/chapter4/HiLo/HiLo/bin/Debug/net9.0/HiLo.dll
+/Users/fabio/Documents/projects/C#/head-first/chapter4/HiLo/HiLo/bin/Debug/net9.0/HiLo.pdb
+/Users/fabio/Documents/projects/C#/head-first/chapter4/HiLo/HiLo/obj/Debug/net9.0/HiLo.dll
+/Users/fabio/Documents/projects/C#/head-first/chapter4/HiLo/HiLo/obj/Debug/net9.0/refint/HiLo.dll
+/Users/fabio/Documents/projects/C#/head-first/chapter4/HiLo/HiLo/obj/Debug/net9.0/HiLo.pdb
+/Users/fabio/Documents/projects/C#/head-first/chapter4/HiLo/HiLo/obj/Debug/net9.0/HiLo.genruntimeconfig.cache
+/Users/fabio/Documents/projects/C#/head-first/chapter4/HiLo/HiLo/obj/Debug/net9.0/ref/HiLo.dll

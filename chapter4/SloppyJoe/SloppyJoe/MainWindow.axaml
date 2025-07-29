@@ -1,0 +1,44 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="SloppyJoe.MainWindow"
+        Title="SloppyJoe"
+        Width="600" Height="500">
+    
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/> 
+            <ColumnDefinition Width="Auto"/> 
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock x:Name="Item1" FontSize="18" Grid.Row="0" Grid.Column="0" Text="Roast beef with yellow mustard on rye" VerticalAlignment="Center"/>
+        <TextBlock x:Name="Price1" FontSize="18" Grid.Row="0" Grid.Column="1" Text="$5.99" HorizontalAlignment="Right" Margin="20,0,0,0"/>
+        
+        <TextBlock x:Name="Item2" FontSize="18" Grid.Row="1" Grid.Column="0" Text="Salami with honey mustard on wheat" VerticalAlignment="Center"/>
+        <TextBlock x:Name="Price2" FontSize="18" Grid.Row="1" Grid.Column="1" Text="$6.99" HorizontalAlignment="Right" Margin="20,0,0,0"/>
+        
+        <TextBlock x:Name="Item3" FontSize="18" Grid.Row="2" Grid.Column="0" Text="Turkey with mayo on white" VerticalAlignment="Center"/>
+        <TextBlock x:Name="Price3" FontSize="18" Grid.Row="2" Grid.Column="1" Text="$7.99" HorizontalAlignment="Right" Margin="20,0,0,0"/>
+        
+        <TextBlock x:Name="Item4" FontSize="18" Grid.Row="3" Grid.Column="0" Text="Ham with relish on pumpernickel" VerticalAlignment="Center"/>
+        <TextBlock x:Name="Price4" FontSize="18" Grid.Row="3" Grid.Column="1" Text="$8.99" HorizontalAlignment="Right" Margin="20,0,0,0"/>
+        
+        <TextBlock x:Name="Item5" FontSize="18" Grid.Row="4" Grid.Column="0" Text="Pastrami with french dressing on a roll" VerticalAlignment="Center"/>
+        <TextBlock x:Name="Price5" FontSize="18" Grid.Row="4" Grid.Column="1" Text="$9.99" HorizontalAlignment="Right" Margin="20,0,0,0"/>
+        
+        <TextBlock x:Name="Item6" FontSize="18" Grid.Row="5" Grid.Column="0" Text="Tofu with brown mustard on rye" VerticalAlignment="Center"/>
+        <TextBlock x:Name="Price6" FontSize="18" Grid.Row="5" Grid.Column="1" Text="$10.99" HorizontalAlignment="Right" Margin="20,0,0,0"/>
+        
+        <TextBlock x:Name="Guacamole" FontSize="18" FontStyle="Italic" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" 
+                   Text="Add guacamole for $2.00" HorizontalAlignment="Right" Margin="0,20,0,0"/>
+    </Grid>
+    
+</Window>

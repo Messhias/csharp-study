@@ -1,0 +1,14 @@
+/Users/fabio/Documents/projects/C#/head-first/chapter4/lapis1/lapis1/bin/Debug/net9.0/lapis1
+/Users/fabio/Documents/projects/C#/head-first/chapter4/lapis1/lapis1/bin/Debug/net9.0/lapis1.deps.json
+/Users/fabio/Documents/projects/C#/head-first/chapter4/lapis1/lapis1/bin/Debug/net9.0/lapis1.runtimeconfig.json
+/Users/fabio/Documents/projects/C#/head-first/chapter4/lapis1/lapis1/bin/Debug/net9.0/lapis1.dll
+/Users/fabio/Documents/projects/C#/head-first/chapter4/lapis1/lapis1/bin/Debug/net9.0/lapis1.pdb
+/Users/fabio/Documents/projects/C#/head-first/chapter4/lapis1/lapis1/obj/Debug/net9.0/lapis1.GeneratedMSBuildEditorConfig.editorconfig
+/Users/fabio/Documents/projects/C#/head-first/chapter4/lapis1/lapis1/obj/Debug/net9.0/lapis1.AssemblyInfoInputs.cache
+/Users/fabio/Documents/projects/C#/head-first/chapter4/lapis1/lapis1/obj/Debug/net9.0/lapis1.AssemblyInfo.cs
+/Users/fabio/Documents/projects/C#/head-first/chapter4/lapis1/lapis1/obj/Debug/net9.0/lapis1.csproj.CoreCompileInputs.cache
+/Users/fabio/Documents/projects/C#/head-first/chapter4/lapis1/lapis1/obj/Debug/net9.0/lapis1.dll
+/Users/fabio/Documents/projects/C#/head-first/chapter4/lapis1/lapis1/obj/Debug/net9.0/refint/lapis1.dll
+/Users/fabio/Documents/projects/C#/head-first/chapter4/lapis1/lapis1/obj/Debug/net9.0/lapis1.pdb
+/Users/fabio/Documents/projects/C#/head-first/chapter4/lapis1/lapis1/obj/Debug/net9.0/lapis1.genruntimeconfig.cache
+/Users/fabio/Documents/projects/C#/head-first/chapter4/lapis1/lapis1/obj/Debug/net9.0/ref/lapis1.dll

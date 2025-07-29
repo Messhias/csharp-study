@@ -1,0 +1,14 @@
+/Users/fabio/Documents/projects/C#/head-first/chapter3/extra2/ConsoleApp1/Extra/bin/Debug/net9.0/Extra
+/Users/fabio/Documents/projects/C#/head-first/chapter3/extra2/ConsoleApp1/Extra/bin/Debug/net9.0/Extra.deps.json
+/Users/fabio/Documents/projects/C#/head-first/chapter3/extra2/ConsoleApp1/Extra/bin/Debug/net9.0/Extra.runtimeconfig.json
+/Users/fabio/Documents/projects/C#/head-first/chapter3/extra2/ConsoleApp1/Extra/bin/Debug/net9.0/Extra.dll
+/Users/fabio/Documents/projects/C#/head-first/chapter3/extra2/ConsoleApp1/Extra/bin/Debug/net9.0/Extra.pdb
+/Users/fabio/Documents/projects/C#/head-first/chapter3/extra2/ConsoleApp1/Extra/obj/Debug/net9.0/Extra.GeneratedMSBuildEditorConfig.editorconfig
+/Users/fabio/Documents/projects/C#/head-first/chapter3/extra2/ConsoleApp1/Extra/obj/Debug/net9.0/Extra.AssemblyInfoInputs.cache
+/Users/fabio/Documents/projects/C#/head-first/chapter3/extra2/ConsoleApp1/Extra/obj/Debug/net9.0/Extra.AssemblyInfo.cs
+/Users/fabio/Documents/projects/C#/head-first/chapter3/extra2/ConsoleApp1/Extra/obj/Debug/net9.0/Extra.csproj.CoreCompileInputs.cache
+/Users/fabio/Documents/projects/C#/head-first/chapter3/extra2/ConsoleApp1/Extra/obj/Debug/net9.0/Extra.dll
+/Users/fabio/Documents/projects/C#/head-first/chapter3/extra2/ConsoleApp1/Extra/obj/Debug/net9.0/refint/Extra.dll
+/Users/fabio/Documents/projects/C#/head-first/chapter3/extra2/ConsoleApp1/Extra/obj/Debug/net9.0/Extra.pdb
+/Users/fabio/Documents/projects/C#/head-first/chapter3/extra2/ConsoleApp1/Extra/obj/Debug/net9.0/Extra.genruntimeconfig.cache
+/Users/fabio/Documents/projects/C#/head-first/chapter3/extra2/ConsoleApp1/Extra/obj/Debug/net9.0/ref/Extra.dll

@@ -1,0 +1,14 @@
+/Users/fabio/Documents/projects/C#/head-first/casino/Casino/Casino/bin/Debug/net9.0/Casino
+/Users/fabio/Documents/projects/C#/head-first/casino/Casino/Casino/bin/Debug/net9.0/Casino.deps.json
+/Users/fabio/Documents/projects/C#/head-first/casino/Casino/Casino/bin/Debug/net9.0/Casino.runtimeconfig.json
+/Users/fabio/Documents/projects/C#/head-first/casino/Casino/Casino/bin/Debug/net9.0/Casino.dll
+/Users/fabio/Documents/projects/C#/head-first/casino/Casino/Casino/bin/Debug/net9.0/Casino.pdb
+/Users/fabio/Documents/projects/C#/head-first/casino/Casino/Casino/obj/Debug/net9.0/Casino.GeneratedMSBuildEditorConfig.editorconfig
+/Users/fabio/Documents/projects/C#/head-first/casino/Casino/Casino/obj/Debug/net9.0/Casino.AssemblyInfoInputs.cache
+/Users/fabio/Documents/projects/C#/head-first/casino/Casino/Casino/obj/Debug/net9.0/Casino.AssemblyInfo.cs
+/Users/fabio/Documents/projects/C#/head-first/casino/Casino/Casino/obj/Debug/net9.0/Casino.csproj.CoreCompileInputs.cache
+/Users/fabio/Documents/projects/C#/head-first/casino/Casino/Casino/obj/Debug/net9.0/Casino.dll
+/Users/fabio/Documents/projects/C#/head-first/casino/Casino/Casino/obj/Debug/net9.0/refint/Casino.dll
+/Users/fabio/Documents/projects/C#/head-first/casino/Casino/Casino/obj/Debug/net9.0/Casino.pdb
+/Users/fabio/Documents/projects/C#/head-first/casino/Casino/Casino/obj/Debug/net9.0/Casino.genruntimeconfig.cache
+/Users/fabio/Documents/projects/C#/head-first/casino/Casino/Casino/obj/Debug/net9.0/ref/Casino.dll
