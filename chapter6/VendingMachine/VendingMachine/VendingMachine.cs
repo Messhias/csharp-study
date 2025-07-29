@@ -2,7 +2,7 @@ namespace VendingMachine;
 
 public class VendingMachine
 {
-    public virtual string Item { get; }
+    public virtual string Item { get; } = "";
 
     protected virtual bool CheckAmount(decimal money)
     {
@@ -20,7 +20,7 @@ public class VendingMachine
     }
 }
 
-class AnimalFeedVendingMachine : VendingMachine
+internal class AnimalFeedVendingMachine : VendingMachine
 {
     public override string Item { get; } = "a handful of animal feed";
 
