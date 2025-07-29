@@ -1,47 +1,9 @@
 namespace AbilityScoreTest;
 
-public class SwordDamage
+public class SwordDamage : WeaponDamage
 {
     private const int BASE_DAMAGE = 10;
     private const int FLAME_DAMAGE = 10;
-
-    public int Damage { get; private set; }
-
-    private int _roll;
-
-    public int Roll
-    {
-        get { return _roll; }
-        set
-        {
-            _roll = value;
-            CalculateDamage();
-        }
-    }
-
-    private bool _magic;
-
-    public bool Magic
-    {
-        get { return _magic; }
-        set
-        {
-            _magic = value;
-            CalculateDamage();
-        }
-    }
-
-    private bool _flaming;
-
-    public bool Flaming
-    {
-        get { return _flaming; }
-        set
-        {
-            _flaming = value;
-            CalculateDamage();
-        }
-    }
 
     private void CalculateDamage()
     {
@@ -57,9 +19,8 @@ public class SwordDamage
         }
     }
 
-    public SwordDamage(int roll)
+    public SwordDamage(int roll) : base(roll)
     {
-        _roll = roll;
         CalculateDamage();
     }
 

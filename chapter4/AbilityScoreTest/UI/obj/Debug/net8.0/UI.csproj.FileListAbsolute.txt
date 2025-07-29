@@ -77,3 +77,4 @@
 /Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/UI/bin/Debug/net8.0/AbilityScoreTest
 /Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/UI/bin/Debug/net8.0/AbilityScoreTest.dll
 /Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/UI/bin/Debug/net8.0/AbilityScoreTest.pdb
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/UI/obj/Debug/net8.0/UI.sourcelink.json

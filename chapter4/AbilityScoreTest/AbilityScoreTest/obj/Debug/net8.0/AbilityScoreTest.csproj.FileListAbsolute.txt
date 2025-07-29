@@ -12,3 +12,4 @@
 /Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/AbilityScoreTest/obj/Debug/net8.0/AbilityScoreTest.pdb
 /Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/AbilityScoreTest/obj/Debug/net8.0/AbilityScoreTest.genruntimeconfig.cache
 /Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/AbilityScoreTest/obj/Debug/net8.0/ref/AbilityScoreTest.dll
+/Users/fabio/Documents/projects/C#/head-first/chapter4/AbilityScoreTest/AbilityScoreTest/obj/Debug/net8.0/AbilityScoreTest.sourcelink.json
