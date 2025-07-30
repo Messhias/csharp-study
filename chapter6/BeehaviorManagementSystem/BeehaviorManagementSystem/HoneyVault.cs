@@ -2,29 +2,29 @@ namespace BeehaviorManagementSystem;
 
 public static class HoneyVault
 {
-    private const float NECTAR_CONVERSION_RATIO = 0.19f;
-    private const float LOW_LEVEL_WARNING = 10f;
-    private static float honey = 25f;
-    private static float nectar = 100f;
+    private const float NectarConversionRatio = 0.19f;
+    private const float LowLevelWarning = 10f;
+    private static float _honey = 25f;
+    private static float _nectar = 100f;
 
 
     static void ConvertNectarToHoney(float amount)
     {
-        amount -= nectar;
+        amount -= _nectar;
 
-        if (amount < nectar)
+        if (amount < _nectar)
         {
-            amount = nectar;
+            amount = _nectar;
         }
         
-        honey += amount * NECTAR_CONVERSION_RATIO;
+        _honey += amount * NectarConversionRatio;
     }
 
-    static bool ConsumeHoney(float amount)
+    public static bool ConsumeHoney(float amount)
     {
-        if (amount > honey)
+        if (amount > _honey)
         {
-            honey -=  amount;
+            _honey -=  amount;
 
             return true;
         }
@@ -36,13 +36,13 @@ public static class HoneyVault
     {
         if (amount > 0)
         {
-            honey += amount;
+            _honey += amount;
         }
     }
 
     static string StatusReport()
     {
-        if (honey < LOW_LEVEL_WARNING)
+        if (_honey < LowLevelWarning)
         {
             return "LOW HONEY - ADD MORE MANUFACTURERS";
         }
