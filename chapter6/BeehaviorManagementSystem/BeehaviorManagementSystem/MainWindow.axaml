@@ -5,35 +5,26 @@
         mc:Ignorable="d" d:DesignWidth="625" d:DesignHeight="325"
         x:Class="BeehaviorManagementSystem.MainWindow"
         Title="Beehavior Management System">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="4*" />
-            <RowDefinition Height="3*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
+    <Grid RowDefinitions="1*,4*,3*" ColumnDefinitions="*,*">
 
         <Label Content="Job Assigments" FontSize="18" Margin="20,0"
                HorizontalAlignment="Center" VerticalAlignment="Center" />
 
-        <StackPanel Grid.Row="1" VerticalAlignment="Top" Margin="20">
-            <ComboBox Name="jobSelector" FontSize="18" SelectedIndex="0" Margin="0,0,0,20">
+        <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Margin="20">
+            <ComboBox Name="JobSelector" FontSize="18" SelectedIndex="0" Margin="0,0,0,20">
                 <ListBoxItem Content="Nectar Collector" />
                 <ListBoxItem Content="Honey Manufacturer" />
                 <ListBoxItem Content="Egg Care" />
             </ComboBox>
-            <Button Content="Assign this job to a bee" FontSize="18" Click="AssignJob_Click" Margin="20" />
+            <Button Content="Assign this job to a bee" FontSize="18" Click="AssignJob_Click" />
         </StackPanel>
 
-        <Button Grid.Row="2" Content="Work the next shift" FontSize="18"
+        <Button Grid.Row="2" Grid.Column="0" Content="Work the next shift" FontSize="18"
                 Click="WorkShift_Click" Margin="20" />
 
-        <Label Content="Queen's Report" Grid.Column="1" FontSize="18" Margin="20,0"
+        <Label Content="Queen's Report" Grid.Row="0" Grid.Column="1" FontSize="18" Margin="20,0"
                VerticalAlignment="Bottom" HorizontalAlignment="Center" />
 
-        <TextBox Name="statusReport" IsReadOnly="True" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Margin="20" />
+        <TextBox Name="StatusReport" IsReadOnly="True" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Margin="20" />
     </Grid>
 </Window>
