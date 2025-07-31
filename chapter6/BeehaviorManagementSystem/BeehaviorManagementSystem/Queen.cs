@@ -4,16 +4,24 @@ namespace BeehaviorManagementSystem;
 
 public class Queen : Bee
 {
-    private float _eggs;
-    private float _unassignedWorkers;
+    public const float EGGS_PERF_SHIFT = 0.45f;
+    public const float HONEY_PER_UNASSIGNED_WORKER = 0.5f;
 
-    private Bee[] _workers;
+    private float _eggs = 0;
+    private float _unassignedWorkers = 3;
+    private Bee[] _workers = new Bee[0];
+
+    public string StatusReport { get; private set; }
+    public override float CostPerShift => 2.15f;
+
 
     public Queen() : base("Queen")
     {
+        AssignBee("Nectar Collector");
+        AssignBee("Honey Manufacturer");
+        AssignBee("Egg Care");
     }
 
-    public override float CostPerShift => 2.15f;
 
     private void AssignBee(string job)
     {
@@ -39,5 +47,57 @@ public class Queen : Bee
             Array.Resize(ref _workers, _workers.Length + 1);
             _workers[_workers.Length - 1] = worker;
         }
+    }
+
+    private void UpdateStatusReport()
+    {
+        StatusReport = $"Vault report: \n{HoneyVault.StatusReport}\n" +
+                       $"Egg count: {_eggs:0.0}\n" +
+                       $"Worker count: {_workers:0.0}\n" +
+                       $"Unassigned Workers: {_unassignedWorkers:0.0}\n" +
+                       $"{WorkerStatus("Honey Manufacturer")}\n" +
+                       $"{WorkerStatus("Nectar Collector")}\n" +
+                       $"{WorkerStatus("Egg Care")}\n";
+    }
+
+    private string WorkerStatus(string job)
+    {
+        int count = 0;
+        foreach (Bee worker in _workers)
+        {
+            if (worker.Job == job)
+            {
+                count++;
+            }
+        }
+
+        string s = "s";
+        if (count == 1)
+        {
+            s = "";
+        }
+
+        return $"{count} {job} bee{s}";
+    }
+
+    public void CareForEggs(float eggsToConvert)
+    {
+        if (_eggs >= eggsToConvert)
+        {
+            _eggs -= eggsToConvert;
+            _unassignedWorkers += eggsToConvert;
+        }
+    }
+
+    protected override void DoJob()
+    {
+        _eggs += EGGS_PERF_SHIFT;
+        foreach (Bee worker in _workers)
+        {
+            worker.WorkTheNextShift(worker.CostPerShift);
+        }
+
+        HoneyVault.ConsumeHoney(_unassignedWorkers + HONEY_PER_UNASSIGNED_WORKER);
+        UpdateStatusReport();
     }
 }
