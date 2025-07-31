@@ -4,7 +4,7 @@ public class Bee
 {
     public string Job { get; private set; }
 
-    public virtual float CostPerShift { get; private set; }
+    public virtual float CostPerShift { get; } = 0.0f;
 
     public Bee(string job)
     {
@@ -21,7 +21,5 @@ public class Bee
         }
     }
 
-    void DoJob()
-    {
-    }
+    protected virtual void DoJob() {}
 }
