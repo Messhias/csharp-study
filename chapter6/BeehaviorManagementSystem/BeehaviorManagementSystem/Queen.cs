@@ -7,12 +7,9 @@ public class Queen : Bee
     public const float EGGS_PERF_SHIFT = 0.45f;
     public const float HONEY_PER_UNASSIGNED_WORKER = 0.5f;
 
-    private float _eggs = 0;
+    private float _eggs;
     private float _unassignedWorkers = 3;
     private Bee[] _workers = new Bee[0];
-
-    public string StatusReport { get; private set; }
-    public override float CostPerShift => 2.15f;
 
 
     public Queen() : base("Queen")
@@ -22,13 +19,16 @@ public class Queen : Bee
         AssignBee("Egg Care");
     }
 
+    public string StatusReport { get; private set; }
+    public override float CostPerShift => 2.15f;
 
-    private void AssignBee(string job)
+
+    public void AssignBee(string job)
     {
         switch (job)
         {
             case "Egg Care":
-                AddWorker(new EggCare());
+                AddWorker(new EggCare(this));
                 break;
             case "Honey Manufacturer":
                 AddWorker(new HoneyManufacturer());
@@ -53,7 +53,7 @@ public class Queen : Bee
     {
         StatusReport = $"Vault report: \n{HoneyVault.StatusReport}\n" +
                        $"Egg count: {_eggs:0.0}\n" +
-                       $"Worker count: {_workers:0.0}\n" +
+                       $"Worker count: {_workers.Length:0.0}\n" +
                        $"Unassigned Workers: {_unassignedWorkers:0.0}\n" +
                        $"{WorkerStatus("Honey Manufacturer")}\n" +
                        $"{WorkerStatus("Nectar Collector")}\n" +
@@ -62,20 +62,13 @@ public class Queen : Bee
 
     private string WorkerStatus(string job)
     {
-        int count = 0;
-        foreach (Bee worker in _workers)
-        {
+        var count = 0;
+        foreach (var worker in _workers)
             if (worker.Job == job)
-            {
                 count++;
-            }
-        }
 
-        string s = "s";
-        if (count == 1)
-        {
-            s = "";
-        }
+        var s = "s";
+        if (count == 1) s = "";
 
         return $"{count} {job} bee{s}";
     }
@@ -92,10 +85,7 @@ public class Queen : Bee
     protected override void DoJob()
     {
         _eggs += EGGS_PERF_SHIFT;
-        foreach (Bee worker in _workers)
-        {
-            worker.WorkTheNextShift(worker.CostPerShift);
-        }
+        foreach (var worker in _workers) worker.WorkTheNextShift(worker.CostPerShift);
 
         HoneyVault.ConsumeHoney(_unassignedWorkers + HONEY_PER_UNASSIGNED_WORKER);
         UpdateStatusReport();

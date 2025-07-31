@@ -3,11 +3,12 @@ namespace BeehaviorManagementSystem;
 public class NectarCollector : Bee
 {
     public const float NECTAR_COLLECTED_PER_SHIFT = 33.25f;
-    public override float CostPerShift => 1.95f;
 
     public NectarCollector() : base("Nectar Collector")
     {
     }
+
+    public override float CostPerShift => 1.95f;
 
     protected override void DoJob()
     {
