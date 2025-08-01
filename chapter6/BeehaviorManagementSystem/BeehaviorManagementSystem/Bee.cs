@@ -11,9 +11,9 @@ public class Bee
 
     public virtual float CostPerShift { get; } = 0.0f;
 
-    public void WorkTheNextShift(float honeyConsumed)
+    public void WorkTheNextShift()
     {
-        var canWork = HoneyVault.ConsumeHoney(honeyConsumed);
+        var canWork = HoneyVault.ConsumeHoney(CostPerShift);
 
         if (canWork) DoJob();
     }

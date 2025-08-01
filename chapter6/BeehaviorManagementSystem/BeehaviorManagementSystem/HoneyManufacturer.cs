@@ -12,6 +12,6 @@ public class HoneyManufacturer : Bee
 
     protected override void DoJob()
     {
-        HoneyVault.CollectNectar(NECTAR_COLLECTED_PER_SHIFT);
+        HoneyVault.ConvertNectarToHoney(NECTAR_COLLECTED_PER_SHIFT);
     }
 }

@@ -5,7 +5,7 @@ public static class HoneyVault
     private const float NECTAR_CONVERSION_RATIO = 0.19f;
     private const float LOW_LEVEL_WARNING = 10.0f;
     private static float _honey = 25.0f;
-    private static readonly float _nectar = 100.0f;
+    private static float _nectar = 100.0f;
 
     public static string StatusReport
     {
@@ -25,13 +25,16 @@ public static class HoneyVault
     }
 
 
-    private static void ConvertNectarToHoney(float amount)
+    public static void ConvertNectarToHoney(float amount)
     {
-        amount -= _nectar;
+        float nectarToConvert = amount;
+        if (nectarToConvert > _nectar)
+        {
+            nectarToConvert = _nectar;
+        }
 
-        if (amount < _nectar) amount = _nectar;
-
-        _honey += amount * NECTAR_CONVERSION_RATIO;
+        _nectar -= nectarToConvert;
+        _honey += nectarToConvert * NECTAR_CONVERSION_RATIO;
     }
 
     public static bool ConsumeHoney(float amount)

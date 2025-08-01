@@ -85,7 +85,7 @@ public class Queen : Bee
     protected override void DoJob()
     {
         _eggs += EGGS_PERF_SHIFT;
-        foreach (var worker in _workers) worker.WorkTheNextShift(worker.CostPerShift);
+        foreach (var worker in _workers) worker.WorkTheNextShift();
 
         HoneyVault.ConsumeHoney(_unassignedWorkers + HONEY_PER_UNASSIGNED_WORKER);
         UpdateStatusReport();

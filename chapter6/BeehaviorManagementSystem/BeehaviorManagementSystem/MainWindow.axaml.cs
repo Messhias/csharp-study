@@ -26,7 +26,7 @@ public partial class MainWindow : Window
 
     private void WorkShift_Click(object? sender, RoutedEventArgs e)
     {
-        _queen.WorkTheNextShift(_queen.CostPerShift);
+        _queen.WorkTheNextShift();
         StatusReport.Text = _queen.StatusReport;
     }
 
