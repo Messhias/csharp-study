@@ -1,6 +1,6 @@
 namespace BeehaviorManagementSystem;
 
-public class Bee
+public abstract class Bee
 {
     public Bee(string job)
     {
@@ -9,7 +9,7 @@ public class Bee
 
     public string Job { get; private set; }
 
-    public virtual float CostPerShift { get; } = 0.0f;
+    protected abstract float CostPerShift { get; }
 
     public void WorkTheNextShift()
     {
@@ -18,7 +18,5 @@ public class Bee
         if (canWork) DoJob();
     }
 
-    protected virtual void DoJob()
-    {
-    }
+    protected abstract void DoJob();
 }

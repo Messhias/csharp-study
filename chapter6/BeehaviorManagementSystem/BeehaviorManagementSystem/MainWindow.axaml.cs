@@ -8,14 +8,14 @@ namespace BeehaviorManagementSystem;
 public partial class MainWindow : Window
 {
     private readonly Queen _queen = new();
-    private readonly DispatcherTimer _timer = new  DispatcherTimer();
+    private readonly DispatcherTimer _timer = new();
 
     public MainWindow()
     {
         InitializeComponent();
         StatusReport.Text = _queen.StatusReport;
         _timer.Tick += Timer_Tick;
-        _timer.Interval = TimeSpan.FromSeconds(0.5);
+        _timer.Interval = TimeSpan.FromSeconds(1.5);
         _timer.Start();
     }
 
@@ -32,7 +32,7 @@ public partial class MainWindow : Window
 
     private void AssignJob_Click(object? sender, RoutedEventArgs e)
     {
-        _queen.AssignBee(JobSelector.SelectedItem?.ToString());
+        _queen.AssignBee(JobSelector.SelectionBoxItem?.ToString());
         StatusReport.Text = _queen.StatusReport;
     }
 }

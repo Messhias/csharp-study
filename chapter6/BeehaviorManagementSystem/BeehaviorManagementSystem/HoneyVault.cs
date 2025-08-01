@@ -27,11 +27,8 @@ public static class HoneyVault
 
     public static void ConvertNectarToHoney(float amount)
     {
-        float nectarToConvert = amount;
-        if (nectarToConvert > _nectar)
-        {
-            nectarToConvert = _nectar;
-        }
+        var nectarToConvert = amount;
+        if (nectarToConvert > _nectar) nectarToConvert = _nectar;
 
         _nectar -= nectarToConvert;
         _honey += nectarToConvert * NECTAR_CONVERSION_RATIO;
@@ -50,6 +47,6 @@ public static class HoneyVault
 
     public static void CollectNectar(float amount)
     {
-        if (amount > 0f) _honey += amount;
+        if (amount > 0f) _nectar += amount;
     }
 }

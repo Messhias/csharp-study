@@ -11,7 +11,7 @@ public class EggCare : Bee
         _queen = queen;
     }
 
-    public override float CostPerShift => 1.35f;
+    protected override float CostPerShift => 1.35f;
 
     protected override void DoJob()
     {

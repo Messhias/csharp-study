@@ -4,12 +4,12 @@ namespace BeehaviorManagementSystem;
 
 public class Queen : Bee
 {
-    public const float EGGS_PERF_SHIFT = 0.45f;
-    public const float HONEY_PER_UNASSIGNED_WORKER = 0.5f;
+    private const float EGGS_PERF_SHIFT = 0.45f;
+    private const float HONEY_PER_UNASSIGNED_WORKER = 0.5f;
 
     private float _eggs;
     private float _unassignedWorkers = 3;
-    private Bee[] _workers = new Bee[0];
+    private Bee[] _workers = [];
 
 
     public Queen() : base("Queen")
@@ -19,8 +19,8 @@ public class Queen : Bee
         AssignBee("Egg Care");
     }
 
-    public string StatusReport { get; private set; }
-    public override float CostPerShift => 2.15f;
+    public string StatusReport { get; private set; } = "";
+    protected override float CostPerShift => 2.15f;
 
 
     public void AssignBee(string job)
@@ -33,7 +33,7 @@ public class Queen : Bee
             case "Honey Manufacturer":
                 AddWorker(new HoneyManufacturer());
                 break;
-            default:
+            case "Nectar Collector":
                 AddWorker(new NectarCollector());
                 break;
         }

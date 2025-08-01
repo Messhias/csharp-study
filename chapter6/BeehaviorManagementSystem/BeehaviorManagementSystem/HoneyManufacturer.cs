@@ -1,14 +1,10 @@
 namespace BeehaviorManagementSystem;
 
-public class HoneyManufacturer : Bee
+public class HoneyManufacturer() : Bee("Honey Manufacturer")
 {
-    public const float NECTAR_COLLECTED_PER_SHIFT = 33.15f;
+    private const float NECTAR_COLLECTED_PER_SHIFT = 33.15f;
 
-    public HoneyManufacturer() : base("Honey Manufacturer")
-    {
-    }
-
-    public override float CostPerShift => 1.7f;
+    protected override float CostPerShift => 1.7f;
 
     protected override void DoJob()
     {
