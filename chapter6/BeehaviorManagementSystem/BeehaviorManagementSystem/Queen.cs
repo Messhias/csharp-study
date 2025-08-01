@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 namespace BeehaviorManagementSystem;
 
@@ -9,7 +10,7 @@ public class Queen : Bee
 
     private float _eggs;
     private float _unassignedWorkers = 3;
-    private Bee[] _workers = [];
+    private IWorker[] _workers = [];
 
 
     public Queen() : base("Queen")
@@ -62,10 +63,7 @@ public class Queen : Bee
 
     private string WorkerStatus(string job)
     {
-        var count = 0;
-        foreach (var worker in _workers)
-            if (worker.Job == job)
-                count++;
+        var count = _workers.Count(worker => worker.Job == job);
 
         var s = "s";
         if (count == 1) s = "";

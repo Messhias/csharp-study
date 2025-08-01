@@ -1,13 +1,13 @@
 namespace BeehaviorManagementSystem;
 
-public abstract class Bee
+public abstract class Bee : IWorker
 {
     public Bee(string job)
     {
         Job = job;
     }
 
-    public string Job { get; private set; }
+    public string Job { get; set; }
 
     protected abstract float CostPerShift { get; }
 
