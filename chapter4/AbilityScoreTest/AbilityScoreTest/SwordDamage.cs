@@ -5,7 +5,7 @@ public class SwordDamage : WeaponDamage
     private const int BASE_DAMAGE = 10;
     private const int FLAME_DAMAGE = 10;
 
-    private void CalculateDamage()
+    protected override void CalculateDamage()
     {
         decimal magicMultiplier = 1M;
         if (Magic) magicMultiplier = 1.7M;

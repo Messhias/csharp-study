@@ -6,7 +6,7 @@ public class ArrowDamage : WeaponDamage
     private const decimal MAGIC_DAMAGE = 2.5M;
     private const decimal FLAME_DAMAGE = 1.25M;
 
-    private void CalculateDamage()
+    protected override void CalculateDamage()
     {
         decimal baseDamage = Roll * BASE_MULTIPLIER;
         

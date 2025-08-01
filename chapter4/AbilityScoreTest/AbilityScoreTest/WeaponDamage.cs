@@ -1,6 +1,6 @@
 namespace AbilityScoreTest;
 
-public class WeaponDamage
+abstract public class WeaponDamage
 {
     public int Damage { get; protected set; }
     
@@ -39,7 +39,7 @@ public class WeaponDamage
         }
     }
 
-    protected virtual void CalculateDamage() {}
+    protected abstract void CalculateDamage();
 
     public WeaponDamage(int roll)
     {
