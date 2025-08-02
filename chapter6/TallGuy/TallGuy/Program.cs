@@ -16,7 +16,7 @@ fingersTheClown.Honk();
 
 if (fingersTheClown is IScaryClown isScaryClown)
 {
-    isScaryClown.ScareLittleChildren();
+    isScaryClown.ScareAdults();
 }
 
 IClown.CarCapacity = 18;
