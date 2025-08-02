@@ -7,13 +7,13 @@ namespace BeehaviorManagementSystem;
 
 public partial class MainWindow : Window
 {
-    private readonly Queen _queen = new();
+    private readonly Queen _queen;
     private readonly DispatcherTimer _timer = new();
 
     public MainWindow()
     {
         InitializeComponent();
-        StatusReport.Text = _queen.StatusReport;
+        _queen = Resources["queen"] as Queen ?? new Queen();
         _timer.Tick += Timer_Tick;
         _timer.Interval = TimeSpan.FromSeconds(1.5);
         _timer.Start();

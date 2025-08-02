@@ -4,7 +4,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="625" d:DesignHeight="325"
         x:Class="BeehaviorManagementSystem.MainWindow"
+        xmlns:beehaviorManagementSystem="clr-namespace:BeehaviorManagementSystem"
         Title="Beehavior Management System">
+
+    <Window.Resources>
+        <beehaviorManagementSystem:Queen x:Key="queen" />
+    </Window.Resources>
     <Grid RowDefinitions="1*,4*,3*" ColumnDefinitions="*,*">
 
         <Label Content="Job Assigments" FontSize="18" Margin="20,0"

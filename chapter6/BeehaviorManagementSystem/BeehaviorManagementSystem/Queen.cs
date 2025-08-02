@@ -1,9 +1,12 @@
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace BeehaviorManagementSystem;
 
-public class Queen : Bee
+public class Queen : Bee, INotifyPropertyChanged
 {
     private const float EGGS_PERF_SHIFT = 0.45f;
     private const float HONEY_PER_UNASSIGNED_WORKER = 0.5f;
@@ -59,6 +62,7 @@ public class Queen : Bee
                        $"{WorkerStatus("Honey Manufacturer")}\n" +
                        $"{WorkerStatus("Nectar Collector")}\n" +
                        $"{WorkerStatus("Egg Care")}\n";
+        OnPropertyChanged("StatusReport");
     }
 
     private string WorkerStatus(string job)
@@ -87,5 +91,20 @@ public class Queen : Bee
 
         HoneyVault.ConsumeHoney(_unassignedWorkers + HONEY_PER_UNASSIGNED_WORKER);
         UpdateStatusReport();
+    }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
+    {
+        if (EqualityComparer<T>.Default.Equals(field, value)) return false;
+        field = value;
+        OnPropertyChanged(propertyName);
+        return true;
     }
 }
