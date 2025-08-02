@@ -18,3 +18,6 @@ if (fingersTheClown is IScaryClown isScaryClown)
 {
     isScaryClown.ScareLittleChildren();
 }
+
+IClown.CarCapacity = 18;
+Console.WriteLine(IClown.ClownCarDescription());
