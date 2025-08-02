@@ -9,3 +9,12 @@ IClown tall = new TallGuy()
 tall.TalkAboutYourself();
 Console.Write($"The tall guy has {tall.FunnyThingIHave}");
 tall.Honk();
+
+
+IClown fingersTheClown = new ScaryScary("big red nose" , 15);
+fingersTheClown.Honk();
+
+if (fingersTheClown is IScaryClown isScaryClown)
+{
+    isScaryClown.ScareLittleChildren();
+}
