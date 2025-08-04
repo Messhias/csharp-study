@@ -4,7 +4,7 @@ public class Card : IComparable<Card>
     public Values Values { get; private set; }
     public Suits Suit { get; private set; }
 
-    public string Name => $"{Values} of {Suit}";
+    private string Name => $"{Values} of {Suit}";
 
     public Card(Values values, Suits suit)
     {
@@ -20,4 +20,6 @@ public class Card : IComparable<Card>
         if (valuesComparison != 0) return valuesComparison;
         return Suit.CompareTo(other.Suit);
     }
+
+    public override string ToString() => Name;
 }
