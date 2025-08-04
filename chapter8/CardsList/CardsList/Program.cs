@@ -23,9 +23,7 @@
             cards.Add(new Card(values, suit));
         }
         
-        IComparer<Card> comparer = Comparer<Card>.Create((x, y) => x.Values.CompareTo(y.Values));
-
-        cards.Sort(comparer);
+        cards.Sort(new CardComparerByValue());
         PrintCards(cards);
     }
     
