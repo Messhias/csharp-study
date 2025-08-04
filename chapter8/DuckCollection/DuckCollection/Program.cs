@@ -6,7 +6,10 @@
     new Duck() { Kind = KindOfDuck.Muscovy, Size = 222},
 };
 
-ducks.Sort();
+// IComparer<Duck> comparer = new DuckCompareBySize(); // uncomment if you want to compare by size
+IComparer<Duck> comparer = new DuckComparerByKind();
+ducks.Sort(comparer);
+
 PrintDucks(ducks);
 
 
