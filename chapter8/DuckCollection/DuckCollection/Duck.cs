@@ -24,6 +24,11 @@ public class Duck : IComparable<Duck>
         
         return Kind.CompareTo(other.Kind);
     }
+
+    public override string ToString()
+    {
+        return $"{Size} inch {Kind}";
+    }
 }
 
 public enum KindOfDuck
