@@ -1,5 +1,7 @@
 public class Duck : IComparable<Duck>
 {
+    private string _name => $"{Size} of {Kind}";
+    
     public int Size
     {
         get;
@@ -25,10 +27,7 @@ public class Duck : IComparable<Duck>
         return Kind.CompareTo(other.Kind);
     }
 
-    public override string ToString()
-    {
-        return $"{Size} inch {Kind}";
-    }
+    public override string ToString() => _name;
 }
 
 public enum KindOfDuck
