@@ -22,6 +22,19 @@ comparer.SortBy = SortCriteria.KindThenSize;
 ducks.Sort(comparer);
 PrintDucks(ducks);
 
+List<Duck> ducksTwo = new List<Duck>()
+{
+    new Duck() { Kind = KindOfDuck.Mallard, Size = 17},
+    new Duck() { Kind = KindOfDuck.Muscovy, Size = 18},
+    new Duck() { Kind = KindOfDuck.Loon, Size = 19},
+    new Duck() { Kind = KindOfDuck.Mallard, Size = 20},
+    new Duck() { Kind = KindOfDuck.Loon, Size = 21},
+};
+
+IEnumerable<Bird> upCastBirds = ducksTwo;
+
+Bird.FlyWay(upCastBirds.ToList(), "Norway");
+
 
 void PrintDucks(List<Duck> ducks)
 {

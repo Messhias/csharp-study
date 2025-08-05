@@ -1,4 +1,4 @@
-public class Duck : IComparable<Duck>
+public class Duck : Bird, IComparable<Duck>
 {
     private string _name => $"{Size} of {Kind}";
     
