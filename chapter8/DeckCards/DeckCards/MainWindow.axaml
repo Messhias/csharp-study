@@ -2,9 +2,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:deckCards="clr-namespace:DeckCards"
         mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
         x:Class="DeckCards.MainWindow"
         Title="Tow Decks">
+
+    <Window.Resources>
+        <deckCards:Deck x:Key="leftDeck" />
+        <deckCards:Deck x:Key="rightDeck" />
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -17,11 +23,15 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Column="0" Content="Deck _1" Name="deck1Label" Margin="10,0,0,0" Target="deck1Label" />
-        <Label Grid.Column="1" Content="Deck _2" Name="deck2Label" Margin="10,0,0,0" Target="deck2Label" />
+        <Label Grid.Column="0" Content="Deck _1" Name="deck1Label" Margin="10,0,0,0"
+               Target="{Binding ElementName=deck1Label, Mode=OneWay}" />
+        <Label Grid.Column="1" Content="Deck _2" Name="deck2Label" Margin="10,0,0,0"
+               Target="{Binding ElementName=deck2Label, Mode=OneWay}" />
 
-        <ListBox Grid.Row="1" Grid.Column="0" Name="leftDeckListBox" Margin="10,0,10,10" />
-        <ListBox Grid.Row="1" Grid.Column="1" Name="rightDeckListBox" Margin="10,0,10,10" />
+        <ListBox Grid.Row="1" Grid.Column="0" Name="leftDeckListBox" Margin="10,0,10,10"
+                 ItemsSource="{DynamicResource leftDeck}" />
+        <ListBox Grid.Row="1" Grid.Column="1" Name="rightDeckListBox" Margin="10,0,10,10"
+                 ItemsSource="{DynamicResource rightDeck}" />
 
         <Button Grid.Column="0" Grid.Row="2" Content="_Shuffle" Name="shuffleLeftDeck" Margin="10,0,10,10" />
         <Button Grid.Column="0" Grid.Row="3" Content="_Reset" Name="resetLeftDeck" Margin="10,0,10,10" />
