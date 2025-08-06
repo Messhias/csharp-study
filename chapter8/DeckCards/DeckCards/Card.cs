@@ -1,14 +1,19 @@
 namespace DeckCards;
 public class Card
 {
-    public Values Values { get; private set; }
+    
+    public Values Value { get; private set; }
     public Suits Suit { get; private set; }
 
-    public string Name => $"{Values} of  {Suit}";
-
-    public Card(Values values, Suits suit)
+    public Card(Values value, Suits suit)
     {
-        Values = values;
         Suit = suit;
+        Value = value;
+    }
+    public string Name => $"{Value} of {Suit}";
+
+    public override string ToString()
+    {
+        return Name;
     }
 }
