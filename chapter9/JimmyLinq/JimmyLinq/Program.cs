@@ -65,6 +65,6 @@ public static class ComicAnalyzer
             into g
             select g;
 
-        return groups
+        return groups;
     }
 }
