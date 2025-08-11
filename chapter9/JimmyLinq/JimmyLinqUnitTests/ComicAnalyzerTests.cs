@@ -1,5 +1,4 @@
 ﻿using JimmyLinq;
-using NUnit.Framework.Legacy;
 
 namespace JimmyLinqUnitTests;
 
@@ -49,7 +48,7 @@ public class ComicAnalyzerTests
             new() { Issue = 2, Critic = Critics.MuddyCritic, Score = 1 },
             new() { Issue = 2, Critic = Critics.RottenTornadoes, Score = 3 },
             new() { Issue = 3, Critic = Critics.MuddyCritic, Score = 3 },
-            new() { Issue = 3, Critic = Critics.RottenTornadoes, Score = 1 },
+            new() { Issue = 3, Critic = Critics.RottenTornadoes, Score = 1 }
         ];
 
         var expectedResults = new[]
@@ -59,9 +58,9 @@ public class ComicAnalyzerTests
             "MuddyCritic rated #2 'Issue 2' 1",
             "RottenTornadoes rated #2 'Issue 2' 3",
             "MuddyCritic rated #3 'Issue 3' 3",
-            "RottenTornadoes rated #3 'Issue 3' 1",
+            "RottenTornadoes rated #3 'Issue 3' 1"
         };
-        
+
         var actualResults = ComicAnalyzer.GetReviews(_testComics, testReviews);
 
         Assert.That(actualResults, Is.EqualTo(expectedResults).AsCollection);
@@ -72,13 +71,13 @@ public class ComicAnalyzerTests
     {
         var testReviews = new[]
         {
-            new Review(){Issue = 1, Critic = Critics.MuddyCritic, Score = -12.1212},
-            new Review(){Issue = 1, Critic = Critics.RottenTornadoes, Score = 391691234.48931},
-            new Review(){Issue = 2, Critic = Critics.RottenTornadoes, Score = 0},
-            new Review(){Issue = 2, Critic = Critics.MuddyCritic, Score= 40.3},
-            new Review(){Issue = 2, Critic = Critics.MuddyCritic, Score= 40.3},
-            new Review(){Issue = 2, Critic = Critics.MuddyCritic, Score= 40.3},
-            new Review(){Issue = 2, Critic = Critics.MuddyCritic, Score= 40.3},
+            new Review { Issue = 1, Critic = Critics.MuddyCritic, Score = -12.1212 },
+            new Review { Issue = 1, Critic = Critics.RottenTornadoes, Score = 391691234.48931 },
+            new Review { Issue = 2, Critic = Critics.RottenTornadoes, Score = 0 },
+            new Review { Issue = 2, Critic = Critics.MuddyCritic, Score = 40.3 },
+            new Review { Issue = 2, Critic = Critics.MuddyCritic, Score = 40.3 },
+            new Review { Issue = 2, Critic = Critics.MuddyCritic, Score = 40.3 },
+            new Review { Issue = 2, Critic = Critics.MuddyCritic, Score = 40.3 }
         };
 
         var expectedResults = new[]
@@ -89,9 +88,9 @@ public class ComicAnalyzerTests
             "MuddyCritic rated #2 'Issue 2' 40,3",
             "MuddyCritic rated #2 'Issue 2' 40,3",
             "MuddyCritic rated #2 'Issue 2' 40,3",
-            "MuddyCritic rated #2 'Issue 2' 40,3",
+            "MuddyCritic rated #2 'Issue 2' 40,3"
         };
-        
+
         var actualResults = ComicAnalyzer.GetReviews(_testComics, testReviews).ToList();
         Assert.That(actualResults, Is.EqualTo(expectedResults).AsCollection);
     }
