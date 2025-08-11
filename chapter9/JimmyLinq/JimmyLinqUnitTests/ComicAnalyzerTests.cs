@@ -66,4 +66,33 @@ public class ComicAnalyzerTests
 
         Assert.That(actualResults, Is.EqualTo(expectedResults).AsCollection);
     }
+
+    [Test]
+    public void ComicAnalyzer_Should_Handle_Weird_Review_Scores()
+    {
+        var testReviews = new[]
+        {
+            new Review(){Issue = 1, Critic = Critics.MuddyCritic, Score = -12.1212},
+            new Review(){Issue = 1, Critic = Critics.RottenTornadoes, Score = 391691234.48931},
+            new Review(){Issue = 2, Critic = Critics.RottenTornadoes, Score = 0},
+            new Review(){Issue = 2, Critic = Critics.MuddyCritic, Score= 40.3},
+            new Review(){Issue = 2, Critic = Critics.MuddyCritic, Score= 40.3},
+            new Review(){Issue = 2, Critic = Critics.MuddyCritic, Score= 40.3},
+            new Review(){Issue = 2, Critic = Critics.MuddyCritic, Score= 40.3},
+        };
+
+        var expectedResults = new[]
+        {
+            "MuddyCritic rated #1 'Issue 1' -12,1212",
+            "RottenTornadoes rated #1 'Issue 1' 391691234,48931",
+            "RottenTornadoes rated #2 'Issue 2' 0",
+            "MuddyCritic rated #2 'Issue 2' 40,3",
+            "MuddyCritic rated #2 'Issue 2' 40,3",
+            "MuddyCritic rated #2 'Issue 2' 40,3",
+            "MuddyCritic rated #2 'Issue 2' 40,3",
+        };
+        
+        var actualResults = ComicAnalyzer.GetReviews(_testComics, testReviews).ToList();
+        Assert.That(actualResults, Is.EqualTo(expectedResults).AsCollection);
+    }
 }
