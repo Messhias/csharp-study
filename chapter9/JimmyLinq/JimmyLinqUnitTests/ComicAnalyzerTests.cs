@@ -4,12 +4,12 @@ namespace JimmyLinqUnitTests;
 
 public class ComicAnalyzerTests
 {
-    private IEnumerable<Comics> testComics = new[]
-    {
-        new Comics() { Issue = 1, Name = "Issue 1" },
-        new Comics() { Issue = 2, Name = "Issue 2" },
-        new Comics() { Issue = 3, Name = "Issue 3" },
-    };
+    private readonly IEnumerable<Comics> _testComics =
+    [
+        new() { Issue = 1, Name = "Issue 1" },
+        new() { Issue = 2, Name = "Issue 2" },
+        new() { Issue = 3, Name = "Issue 3" }
+    ];
 
     [SetUp]
     public void Setup()
@@ -26,11 +26,15 @@ public class ComicAnalyzerTests
             { 3, 1000M },
         };
 
-        var groups = ComicAnalyzer.GroupComicsByPrice(testComics, prices);
+        var groups = ComicAnalyzer.GroupComicsByPrice(_testComics, prices);
 
-        Assert.That(2, Is.EqualTo(groups.Count()));
-        Assert.That(PriceRange.Cheap, Is.EqualTo(groups.First().Key));
-        Assert.That(2, Is.EqualTo(groups.First().First().Issue));
-        Assert.That("Issue 2",  Is.EqualTo(groups.First().First().Name));
+        var enumerable = groups as IGrouping<PriceRange, Comics>[] ?? groups.ToArray();
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(enumerable.Count(), Is.EqualTo(2));
+            Assert.That(enumerable.First().Key, Is.EqualTo(PriceRange.Cheap));
+            Assert.That(enumerable.First().First().Issue, Is.EqualTo(2));
+            Assert.That(enumerable.First().First().Name, Is.EqualTo("Issue 2"));
+        }
     }
 }
