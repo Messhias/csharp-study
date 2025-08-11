@@ -26,14 +26,14 @@ public class Comics
         { 97, 3525M }
     };
 
-    public static readonly IEnumerable<Review> Reviews = new[]
-    {
-        new Review { Issue = 36, Critic = Critics.MuddyCritic, Score = 37.6 },
-        new Review { Issue = 74, Critic = Critics.RottenTornadoes, Score = 22.8 },
-        new Review { Issue = 74, Critic = Critics.MuddyCritic, Score = 84.2 },
-        new Review { Issue = 83, Critic = Critics.RottenTornadoes, Score = 89.4 },
-        new Review { Issue = 97, Critic = Critics.MuddyCritic, Score = 98.1 }
-    };
+    public static readonly IEnumerable<Review> Reviews =
+    [
+        new() { Issue = 36, Critic = Critics.MuddyCritic, Score = 37.6 },
+        new() { Issue = 74, Critic = Critics.RottenTornadoes, Score = 22.8 },
+        new() { Issue = 74, Critic = Critics.MuddyCritic, Score = 84.2 },
+        new() { Issue = 83, Critic = Critics.RottenTornadoes, Score = 89.4 },
+        new() { Issue = 97, Critic = Critics.MuddyCritic, Score = 98.1 }
+    ];
 
     public string Name { get; set; }
     public int Issue { get; set; }
