@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyEnumerable", "MyEnumerable\MyEnumerable.csproj", "{C49581F8-EA38-4070-AC15-3AC499F89A64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YeildProject", "YeildProject\YeildProject.csproj", "{5020FB95-F7CC-43A0-8A02-5A59364BA8C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{C49581F8-EA38-4070-AC15-3AC499F89A64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C49581F8-EA38-4070-AC15-3AC499F89A64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C49581F8-EA38-4070-AC15-3AC499F89A64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5020FB95-F7CC-43A0-8A02-5A59364BA8C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5020FB95-F7CC-43A0-8A02-5A59364BA8C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5020FB95-F7CC-43A0-8A02-5A59364BA8C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5020FB95-F7CC-43A0-8A02-5A59364BA8C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

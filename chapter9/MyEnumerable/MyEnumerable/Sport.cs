@@ -15,6 +15,8 @@ internal enum Sport
 
 internal class ManualSportSequence : IEnumerable<Sport>
 {
+    public Sport this[int index] => (Sport)index;
+
     public IEnumerator<Sport> GetEnumerator()
     {
         return new ManualSportEnumerator();
@@ -28,27 +30,20 @@ internal class ManualSportSequence : IEnumerable<Sport>
 
 internal class ManualSportEnumerator : IEnumerator<Sport>
 {
-    int _current = -1;
+    private int _current = -1;
 
-    public Sport Current
-    {
-        get { return (Sport)_current; }
-    }
+    public Sport Current => (Sport)_current;
 
     public void Dispose()
     {
-        return;
     }
 
-    object IEnumerator.Current
-    {
-        get { return Current; }
-    }
+    object IEnumerator.Current => Current;
 
     public bool MoveNext()
     {
         var maxEnumValue = Enum.GetValues(typeof(Sport)).Length;
-        if ((int)_current >= maxEnumValue - 1)
+        if (_current >= maxEnumValue - 1)
             return false;
         _current++;
         return true;
@@ -57,5 +52,24 @@ internal class ManualSportEnumerator : IEnumerator<Sport>
     public void Reset()
     {
         _current = 0;
+    }
+}
+
+internal class BetterSportSequence : IEnumerable<Sport>
+{
+    public Sport this[int index] => (Sport)index;
+    
+    public IEnumerator<Sport> GetEnumerator()
+    {
+        int maxEnumValue = Enum.GetValues(typeof(Sport)).Length;
+        for (int i = 0; i < maxEnumValue - 1; i++)
+        {
+            yield return (Sport)i;
+        }
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
     }
 }
