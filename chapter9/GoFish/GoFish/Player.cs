@@ -32,7 +32,7 @@ public class Player
 
     public void GetNextHand(Deck stock)
     {
-        while (stock.Count() > 0 && _hand.Count < 5) _hand.Add(stock.Deal(0));
+        while (stock.Any() && _hand.Count < 5) _hand.Add(stock.Deal(0));
     }
 
     public IEnumerable<Card> DoYouHaveAny(Values value, Deck deck)
