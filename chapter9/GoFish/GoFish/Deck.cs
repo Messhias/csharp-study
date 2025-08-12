@@ -26,7 +26,7 @@ public class Deck : ObservableCollection<Card>
             Add(new Card((Values)value, (Suits)suit));
     }
 
-    public void Shuffle()
+    public Deck Shuffle()
     {
         var copy = new List<Card>(this);
         Clear();
@@ -37,6 +37,8 @@ public class Deck : ObservableCollection<Card>
             copy.RemoveAt(index);
             Add(card);
         }
+
+        return this;
     }
 
     public void Sort()

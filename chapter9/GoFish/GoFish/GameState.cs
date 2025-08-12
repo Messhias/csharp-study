@@ -51,7 +51,7 @@ public class GameState
     /// <param name="valueToAskFor">The value to ask the player for</param>
     /// <param name="stock">The stock to draw cards from</param>
     /// <returns>A message that describes what just happened</returns>
-    public static string PlayRound(Player player, Player playerToAsk,
+    public string PlayRound(Player player, Player playerToAsk,
         Values valueToAskFor, Deck stock)
     {
         var valuePlural = (valueToAskFor == Values.Six) ? "Sixes" : $"{valueToAskFor}s";
