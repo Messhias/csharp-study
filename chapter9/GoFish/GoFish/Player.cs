@@ -3,19 +3,19 @@ namespace GoFish;
 public class Player
 {
     public static Random Random = new();
-    private readonly string _name;
+    public string Name {get; private set;}
 
     private readonly List<Values> _books = new();
     private List<Card> _hand = new();
 
     public Player(string name)
     {
-        _name = name;
+        Name = name;
     }
 
     public Player(string name, IEnumerable<Card> cards)
     {
-        _name = name;
+        Name = name;
         _hand.AddRange(cards);
     }
 
@@ -23,9 +23,9 @@ public class Player
     public IEnumerable<Values> Books => _books;
 
     public string Status =>
-        $"{_name} has {_hand.Count()} card{S(_hand.Count())} and {_books.Count()} book{S(_books.Count())}";
+        $"{Name} has {_hand.Count} card{S(_hand.Count)} and {_books.Count} book{S(_books.Count)}";
 
-    private static string S(int s)
+    internal static string S(int s)
     {
         return s == 1 ? "" : "s";
     }
@@ -82,6 +82,6 @@ public class Player
 
     public override string ToString()
     {
-        return _name;
+        return Name;
     }
 }
