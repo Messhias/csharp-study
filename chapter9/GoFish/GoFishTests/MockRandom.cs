@@ -1,0 +1,24 @@
+namespace GoFishTests;
+
+/// <summary>
+///     Mock Random for testing that always returns a specific value
+/// </summary>
+public class MockRandom : Random
+{
+    public int ValueToReturn { get; set; } = 0;
+
+    public override int Next()
+    {
+        return ValueToReturn;
+    }
+
+    public override int Next(int maxValue)
+    {
+        return ValueToReturn;
+    }
+
+    public override int Next(int minValue, int maxValue)
+    {
+        return ValueToReturn;
+    }
+}
