@@ -6,10 +6,10 @@ using System.Linq;
 
 public class GameController
 {
-    private GameState gameState;
-    public bool GameOver { get { return gameState.GameOver; } }
-    public Player HumanPlayer { get { return gameState.HumanPlayer; } }
-    public IEnumerable<Player> Opponents { get { return gameState.Opponents; } }
+    private GameState _gameState;
+    public bool GameOver { get { return _gameState.GameOver; } }
+    public Player HumanPlayer { get { return _gameState.HumanPlayer; } }
+    public IEnumerable<Player> Opponents { get { return _gameState.Opponents; } }
 
     public string Status { get; private set; }
 
@@ -20,8 +20,8 @@ public class GameController
     /// <param name="computerPlayerNames">Names of the computer players</param>
     public GameController(string humanPlayerName, IEnumerable<string> computerPlayerNames)
     {
-        gameState = new GameState(humanPlayerName, computerPlayerNames, new Deck().Shuffle());
-        Status = $"Starting a new game with players {string.Join(", ", gameState.Players)}";
+        _gameState = new GameState(humanPlayerName, computerPlayerNames, new Deck().Shuffle());
+        Status = $"Starting a new game with players {string.Join(", ", _gameState.Players)}";
     }
 
     /// <summary>
@@ -31,16 +31,16 @@ public class GameController
     /// <param name="valueToAskFor">The value of the card the human is asking for</param>
     public void NextRound(Player playerToAsk, Values valueToAskFor)
     {
-        Status = gameState.PlayRound(gameState.HumanPlayer, playerToAsk,
-            valueToAskFor, gameState.Stock) + Environment.NewLine;
+        Status = _gameState.PlayRound(_gameState.HumanPlayer, playerToAsk,
+            valueToAskFor, _gameState.Stock) + Environment.NewLine;
 
         ComputerPlayersPlayNextRound();
 
         Status += string.Join(Environment.NewLine,
-            gameState.Players.Select(player => player.Status));
-        Status += $"{Environment.NewLine}The stock has {gameState.Stock.Count()} cards";
+            _gameState.Players.Select(player => player.Status));
+        Status += $"{Environment.NewLine}The stock has {_gameState.Stock.Count()} cards";
 
-        Status += Environment.NewLine + gameState.CheckForWinner();
+        Status += Environment.NewLine + _gameState.CheckForWinner();
     }
 
 
@@ -54,18 +54,18 @@ public class GameController
         do
         {
             computerPlayersWithCards =
-                gameState
+                _gameState
                     .Opponents
                     .Where(player => player.Hand.Count() > 0);
             foreach (Player player in computerPlayersWithCards)
             {
-                var randomPlayer = gameState.RandomPlayer(player);
+                var randomPlayer = _gameState.RandomPlayer(player);
                 var randomValue = player.RandomValueFromHand();
-                Status += gameState
-                              .PlayRound(player, randomPlayer, randomValue, gameState.Stock)
+                Status += _gameState
+                              .PlayRound(player, randomPlayer, randomValue, _gameState.Stock)
                           + Environment.NewLine;
             }
-        } while ((gameState.HumanPlayer.Hand.Count() == 0)
+        } while ((_gameState.HumanPlayer.Hand.Count() == 0)
                  && (computerPlayersWithCards.Count() > 0));
     }
 
@@ -75,8 +75,8 @@ public class GameController
     public void NewGame()
     {
         Status = "Starting a new game";
-        gameState = new GameState(gameState.HumanPlayer.Name,
-            gameState.Opponents.Select(player => player.Name),
+        _gameState = new GameState(_gameState.HumanPlayer.Name,
+            _gameState.Opponents.Select(player => player.Name),
             new Deck().Shuffle());
     }
 }
