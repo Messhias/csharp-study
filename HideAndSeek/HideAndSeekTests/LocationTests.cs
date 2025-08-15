@@ -57,6 +57,15 @@ public sealed class LocationTests
     [TestMethod]
     public void TestAddHall()
     {
+        var e = _center.GetExit(Direction.East);
+        Assert.AreEqual(1, e.ExitList.Count());
+        var eastHall1 = new Location("East hall 1");
+        var eastHall2 = new Location("East hall 2");
+        e.AddExit(Direction.East, eastHall1);
+        eastHall1.AddExit(Direction.East, eastHall2);
+        Assert.AreEqual(2, e.ExitList.Count());
+        Assert.AreEqual(2, eastHall1.ExitList.Count());
+        Assert.AreEqual(1, eastHall2.ExitList.Count());
     }
 
     /// <summary>
