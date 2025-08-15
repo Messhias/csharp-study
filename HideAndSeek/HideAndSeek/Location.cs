@@ -15,7 +15,8 @@ public class Location
     /// <summary>
     /// </summary>
     /// Returns a sequence of descriptions of the exits, sorted by direction
-    public IEnumerable<string> ExitList => Exits.Select(e => e.Value.ToString());
+    public IEnumerable<string> ExitList => 
+        Exits.Select(e => $"the {e.Value} is to the {e.Key}");
 
     /// <summary>
     /// The constructor sets the location name
@@ -25,7 +26,7 @@ public class Location
     {
         Name = name;
     }
-    
+
     /// <summary>
     /// Adds an exit to this location
     /// </summary>
@@ -43,10 +44,10 @@ public class Location
     /// <param name="direction">Direciton of the exit location</param>
     /// <returns>The exit location, or this if there is no exit in that direction</returns>
     public Location GetExit(Direction direction) => Exits.ContainsKey(direction) ? Exits[direction] : this;
-    
+
     private void AddReturnExit(Direction direction, Location connectingLocation) =>
         Exits.Add((Direction)(-(int)direction), connectingLocation);
-    
-    
+
+
     public override string ToString() => Name;
 }
