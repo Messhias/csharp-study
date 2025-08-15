@@ -52,6 +52,30 @@ public sealed class LocationTests
     [TestMethod]
     public void TestReturnExists()
     {
+        var e = _center.GetExit(Direction.East);
+        Assert.AreEqual("East Room", e.ToString());
+        Assert.AreSame(_center, e.GetExit(Direction.West));
+        Assert.AreEqual(1, e.ExitList.Count());
+
+        var nw = _center.GetExit(Direction.Northwest);
+        Assert.AreEqual("Northwest Room", nw.ToString());
+        Assert.AreSame(_center, nw.GetExit(Direction.Southeast));
+
+        var se = _center.GetExit(Direction.Southeast);
+        Assert.AreEqual("Southeast Room", se.ToString());
+        Assert.AreSame(_center, se.GetExit(Direction.Northwest));
+
+        var s = _center.GetExit(Direction.South);
+        Assert.AreEqual("South Room", s.ToString());
+        Assert.AreSame(_center, s.GetExit(Direction.North));
+
+        var up = _center.GetExit(Direction.Up);
+        Assert.AreEqual("Upper Room", up.ToString());
+        Assert.AreSame(_center, up.GetExit(Direction.Down));
+
+        var outside = _center.GetExit(Direction.Out);
+        Assert.AreEqual("Outside Room", outside.ToString());
+        Assert.AreSame(_center, outside.GetExit(Direction.In));
     }
 
     [TestMethod]
