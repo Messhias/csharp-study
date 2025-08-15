@@ -1,3 +1,10 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using HideAndSeek;
 
-Console.WriteLine("Hello, World!");
+GameController gameController = new GameController();
+
+while (true)
+{
+    Console.WriteLine(gameController.Status);
+    Console.Write(gameController.Prompt);
+    Console.WriteLine(gameController.ParseInput(Console.ReadLine()));
+}
