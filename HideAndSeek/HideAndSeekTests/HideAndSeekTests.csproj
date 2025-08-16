@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\HideAndSeek\HideAndSeek.csproj" />
+        <ProjectReference Include="..\HideAndSeek\HideAndSeek.csproj"/>
     </ItemGroup>
 
 </Project>

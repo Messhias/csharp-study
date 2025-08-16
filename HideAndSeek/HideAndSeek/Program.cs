@@ -1,6 +1,6 @@
 ﻿using HideAndSeek;
 
-GameController gameController = new GameController();
+var gameController = new GameController();
 
 while (true)
 {

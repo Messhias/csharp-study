@@ -13,5 +13,5 @@ public enum Direction
     Up = -5,
     Down = 5,
     In = -6,
-    Out = 6,
+    Out = 6
 }

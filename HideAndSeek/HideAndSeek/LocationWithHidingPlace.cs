@@ -1,19 +1,37 @@
 namespace HideAndSeek;
 
-public class LocationWithHidingPlace(string name, string hidingLocation) : Location(name)
+public class LocationWithHidingPlace: Location
 {
-    private readonly List<Opponent> _hiders = new();
-    
-    public void Hide(Opponent opponent) => _hiders.Add(opponent);
+    /// <summary>
+    /// The name of the hiding place in this location
+    /// </summary>
+    public readonly string HidingPlace;
 
-    public string HidingPlace { get; set; } = hidingLocation;
+    /// <summary>
+    /// The opponents hidden in this location's hiding place
+    /// </summary>
+    private List<Opponent> hiddenOpponents = new List<Opponent>();
 
-    public List<Opponent> CheckHidingPlace()
+    /// <summary>
+    /// Constructor that sets the location name and hiding place name
+    /// </summary>
+    public LocationWithHidingPlace(string name, string hidingPlace) : base(name) =>
+        HidingPlace = hidingPlace;
+
+    /// <summary>
+    /// Hides an opponent in the hiding place
+    /// </summary>
+    /// <param name="opponent">Opponent to hide</param>
+    public void Hide(Opponent opponent) => hiddenOpponents.Add(opponent);
+
+    /// <summary>
+    /// Checks the hiding place to see if any opponents are there
+    /// </summary>
+    /// <returns>Any opponents that were found, clearing the hiding place</returns>
+    public IEnumerable<Opponent> CheckHidingPlace()
     {
-        var foundOpponents = new List<Opponent>(_hiders);
-        _hiders.Clear();
+        var foundOpponents = new List<Opponent>(hiddenOpponents);
+        hiddenOpponents.Clear();
         return foundOpponents;
     }
-
-    public override string ToString() => Name;
 }

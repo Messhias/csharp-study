@@ -93,16 +93,19 @@ public sealed class LocationTests
     }
 
     /// <summary>
-    /// Describes a direction (e.g. "in" vs. "to the North")
+    ///     Describes a direction (e.g. "in" vs. "to the North")
     /// </summary>
     /// <param name="d">Direction to describe</param>
     /// <returns>string describing the direction</returns>
-    private string DescribeDirection(Direction d) => d switch
+    private string DescribeDirection(Direction d)
     {
-        Direction.Up => "Up",
-        Direction.Down => "Down",
-        Direction.In => "In",
-        Direction.Out => "Out",
-        _ => $"to the {d}",
-    };
+        return d switch
+        {
+            Direction.Up => "Up",
+            Direction.Down => "Down",
+            Direction.In => "In",
+            Direction.Out => "Out",
+            _ => $"to the {d}"
+        };
+    }
 }

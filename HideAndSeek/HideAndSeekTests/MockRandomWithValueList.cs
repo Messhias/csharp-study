@@ -1,15 +1,19 @@
 namespace HideAndSeekTests;
 
-public class MockRandomWithValueList : Random
-{
-    private readonly Queue<int> _valuesToReturn;
-    public MockRandomWithValueList(IEnumerable<int> values) =>
-        _valuesToReturn = new Queue<int>(values);
+using System.Collections.Generic;
 
-    private int NextValue()
+/// <summary>
+/// Mock Random for testing that uses a list to return values
+/// </summary>
+public class MockRandomWithValueList : System.Random
+{
+    private Queue<int> valuesToReturn;
+    public MockRandomWithValueList(IEnumerable<int> values) =>
+        valuesToReturn = new Queue<int>(values);
+    public int NextValue()
     {
-        var nextValue = _valuesToReturn.Dequeue();
-        _valuesToReturn.Enqueue(nextValue);
+        var nextValue = valuesToReturn.Dequeue();
+        valuesToReturn.Enqueue(nextValue);
         return nextValue;
     }
     public override int Next() => NextValue();
