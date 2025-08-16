@@ -1,201 +1,224 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace HideAndSeekTests;
+
+using HideAndSeek;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.IO;
 
-namespace HideAndSeek
+[TestClass]
+public class GameControllerTests
 {
-    using System.Linq;
-    using System.Text.Json;
-    using System.IO;
+    GameController gameController;
 
-    public class GameController
+    [TestInitialize]
+    public void Initialize()
     {
-        /// <summary>
-        /// The player's current location in the house
-        /// </summary>
-        public Location CurrentLocation { get; private set; }
+        gameController = new GameController();
+    }
 
-        /// <summary>
-        /// Returns the the current status to show to the player
-        /// </summary>
-        public string Status
+    [TestMethod]
+    public void TestMovement()
+    {
+        Assert.AreEqual("Entry", gameController.CurrentLocation.Name);
+
+        Assert.IsFalse(gameController.Move(Direction.Up));
+        Assert.AreEqual("Entry", gameController.CurrentLocation.Name);
+
+        Assert.IsTrue(gameController.Move(Direction.East));
+        Assert.AreEqual("Hallway", gameController.CurrentLocation.Name);
+
+        Assert.IsTrue(gameController.Move(Direction.Up));
+        Assert.AreEqual("Landing", gameController.CurrentLocation.Name);
+
+        // Add more movement tests to the TestMovement test method
+    }
+
+    [TestMethod]
+    public void TestParseInput()
+    {
+        var initialStatus = gameController.Status;
+
+        Assert.AreEqual("That's not a valid direction", gameController.ParseInput("X"));
+        Assert.AreEqual(initialStatus, gameController.Status);
+
+        Assert.AreEqual("There's no exit in that direction",
+            gameController.ParseInput("Up"));
+        Assert.AreEqual(initialStatus, gameController.Status);
+
+        Assert.AreEqual("Moving East", gameController.ParseInput("East"));
+        Assert.AreEqual("You are in the Hallway. You see the following exits:" +
+                        Environment.NewLine + " - the Bathroom is to the North" +
+                        Environment.NewLine + " - the Living Room is to the South" +
+                        Environment.NewLine + " - the Entry is to the West" +
+                        Environment.NewLine + " - the Kitchen is to the Northwest" +
+                        Environment.NewLine + " - the Landing is Up" +
+                        Environment.NewLine + "You have not found any opponents", gameController.Status);
+
+        Assert.AreEqual("Moving South", gameController.ParseInput("South"));
+        Assert.AreEqual("You are in the Living Room. You see the following exits:" +
+                        Environment.NewLine + " - the Hallway is to the North" +
+                        Environment.NewLine + "Someone could hide behind the sofa" +
+                        Environment.NewLine + "You have not found any opponents", gameController.Status);
+    }
+
+    [TestMethod]
+    public void TestParseCheck()
+    {
+        Assert.IsFalse(gameController.GameOver);
+
+        // Clear the hiding places and hide the opponents in specific rooms
+        House.ClearHidingPlaces();
+        var joe = gameController.Opponents.ToList()[0];
+        (House.GetLocationByName("Garage") as LocationWithHidingPlace).Hide(joe);
+        var bob = gameController.Opponents.ToList()[1];
+        (House.GetLocationByName("Kitchen") as LocationWithHidingPlace).Hide(bob);
+        var ana = gameController.Opponents.ToList()[2];
+        (House.GetLocationByName("Attic") as LocationWithHidingPlace).Hide(ana);
+        var owen = gameController.Opponents.ToList()[3];
+        (House.GetLocationByName("Attic") as LocationWithHidingPlace).Hide(owen);
+        var jimmy = gameController.Opponents.ToList()[4];
+        (House.GetLocationByName("Kitchen") as LocationWithHidingPlace).Hide(jimmy);
+
+        // Check the Entry -- there are no players hiding there
+        Assert.AreEqual(1, gameController.MoveNumber);
+        Assert.AreEqual("There is no hiding place in the Entry",
+            gameController.ParseInput("Check"));
+        Assert.AreEqual(2, gameController.MoveNumber);
+
+        // Move to the Garage
+        gameController.ParseInput("Out");
+        Assert.AreEqual(3, gameController.MoveNumber);
+
+        // We hid Joe in the Garage, so validate ParseInput's return value and the properties
+        Assert.AreEqual("You found 1 opponent hiding behind the car",
+            gameController.ParseInput("check"));
+        Assert.AreEqual("You are in the Garage. You see the following exits:" +
+                        Environment.NewLine + " - the Entry is In" +
+                        Environment.NewLine + "Someone could hide behind the car" +
+                        Environment.NewLine + "You have found 1 of 5 opponents: Joe",
+            gameController.Status);
+        Assert.AreEqual("4: Which direction do you want to go (or type 'check'): ",
+            gameController.Prompt);
+        Assert.AreEqual(4, gameController.MoveNumber);
+
+        // Move to the bathroom, where nobody is hiding
+        gameController.ParseInput("In");
+        gameController.ParseInput("East");
+        gameController.ParseInput("North");
+        // Check the Bathroom to make sure nobody is hiding there
+        Assert.AreEqual("Nobody was hiding behind the door", gameController.ParseInput("check"));
+        Assert.AreEqual(8, gameController.MoveNumber);
+
+        // Check the Bathroom to make sure nobody is hiding there
+        gameController.ParseInput("South");
+        gameController.ParseInput("Northwest");
+        Assert.AreEqual("You found 2 opponents hiding next to the stove",
+            gameController.ParseInput("check"));
+        Assert.AreEqual("You are in the Kitchen. You see the following exits:" +
+                        Environment.NewLine + " - the Hallway is to the Southeast" +
+                        Environment.NewLine + "Someone could hide next to the stove" +
+                        Environment.NewLine + "You have found 3 of 5 opponents: Joe, Bob, Jimmy",
+            gameController.Status);
+        Assert.AreEqual("11: Which direction do you want to go (or type 'check'): ",
+            gameController.Prompt);
+        Assert.AreEqual(11, gameController.MoveNumber);
+
+        Assert.IsFalse(gameController.GameOver);
+
+        // Head up to the Landing, then check the Pantry (nobody's hiding there)
+        gameController.ParseInput("Southeast");
+        gameController.ParseInput("Up");
+        Assert.AreEqual(13, gameController.MoveNumber);
+
+        gameController.ParseInput("South");
+        Assert.AreEqual("Nobody was hiding inside a cabinet",
+            gameController.ParseInput("check"));
+        Assert.AreEqual(15, gameController.MoveNumber);
+
+        // Check the Attic to find the last two opponents, make sure the game is over
+        gameController.ParseInput("North");
+        gameController.ParseInput("Up");
+        Assert.AreEqual(17, gameController.MoveNumber);
+
+        Assert.AreEqual("You found 2 opponents hiding in a trunk",
+            gameController.ParseInput("check"));
+        Assert.AreEqual("You are in the Attic. You see the following exits:" +
+                        Environment.NewLine + " - the Landing is Down" +
+                        Environment.NewLine + "Someone could hide in a trunk" +
+                        Environment.NewLine +
+                        "You have found 5 of 5 opponents: Joe, Bob, Jimmy, Ana, Owen",
+            gameController.Status);
+        Assert.AreEqual("18: Which direction do you want to go (or type 'check'): ",
+            gameController.Prompt);
+        Assert.AreEqual(18, gameController.MoveNumber);
+
+        Assert.IsTrue(gameController.GameOver);
+    }
+
+    [TestMethod]
+    public void TestSaveAndLoad()
+    {
+        // Clear the hiding places and hide the opponents in specific rooms
+        House.ClearHidingPlaces();
+        var joe = gameController.Opponents.ToList()[0];
+        (House.GetLocationByName("Garage") as LocationWithHidingPlace).Hide(joe);
+        var bob = gameController.Opponents.ToList()[1];
+        (House.GetLocationByName("Garage") as LocationWithHidingPlace).Hide(bob);
+        var ana = gameController.Opponents.ToList()[2];
+        (House.GetLocationByName("Attic") as LocationWithHidingPlace).Hide(ana);
+        var owen = gameController.Opponents.ToList()[3];
+        (House.GetLocationByName("Attic") as LocationWithHidingPlace).Hide(owen);
+        var jimmy = gameController.Opponents.ToList()[4];
+        (House.GetLocationByName("Kitchen") as LocationWithHidingPlace).Hide(jimmy);
+
+        // Find three opponents and move to the Hallway
+        gameController.ParseInput("Out");
+        gameController.ParseInput("Check");
+        gameController.ParseInput("In");
+        gameController.ParseInput("East");
+        gameController.ParseInput("Northwest");
+        gameController.ParseInput("Check");
+        gameController.ParseInput("Southeast");
+        Assert.AreEqual(8, gameController.MoveNumber);
+        Assert.AreEqual("Hallway", gameController.CurrentLocation.Name);
+
+        string filename;
+        do
         {
-            get
-            {
-                var found = foundOpponents.Count() == 0 ? "You have not found any opponents"
-                    : $"You have found {foundOpponents.Count()} of {Opponents.Count()} opponents: {string.Join(", ", foundOpponents.Select(o => o.Name))}";
-                var hidingPlace = (CurrentLocation is LocationWithHidingPlace location) ?
-                    $"{Environment.NewLine}Someone could hide {location.HidingPlace}" : "";
-                return $"You are in the {CurrentLocation}. You see the following exits:" + Environment.NewLine +
-                    $" - {string.Join(Environment.NewLine + " - ", CurrentLocation.ExitList)}{hidingPlace}" +
-                    $"{Environment.NewLine}{found}";
-            }
-        }
-        /// <summary>
-        /// The number of moves the player has made
-        /// </summary>
-        public int MoveNumber { get; private set; } = 1;
+            filename = $"testsave_{new Random().Next()}";
+        } while (File.Exists($"{filename}.json"));
 
-        /// <summary>
-        /// Private list of opponents the player needs to find
-        /// </summary>
-        public readonly IEnumerable<Opponent> Opponents = new List<Opponent>()
-        {
-            new Opponent("Joe"),
-            new Opponent("Bob"),
-            new Opponent("Ana"),
-            new Opponent("Owen"),
-            new Opponent("Jimmy"),
-        };
+        // Save the game state to a temporary file
+        gameController.ParseInput($"save {filename}");
 
-        /// <summary>
-        /// Private list of opponents the player has found so far
-        /// </summary>
-        private readonly List<Opponent> foundOpponents = new List<Opponent>();
+        gameController = new GameController();
+        Assert.AreEqual(1, gameController.MoveNumber);
+        Assert.AreEqual("Entry", gameController.CurrentLocation.Name);
 
-        /// <summary>
-        /// Returns true if the game is over
-        /// </summary>
-        public bool GameOver => Opponents.Count() == foundOpponents.Count();
+        gameController.ParseInput($"load {filename}");
+        Assert.AreEqual(8, gameController.MoveNumber);
+        Assert.AreEqual("Hallway", gameController.CurrentLocation.Name);
+        Assert.AreEqual("You are in the Hallway. You see the following exits:" +
+                        Environment.NewLine + " - the Bathroom is to the North" +
+                        Environment.NewLine + " - the Living Room is to the South" +
+                        Environment.NewLine + " - the Entry is to the West" +
+                        Environment.NewLine + " - the Kitchen is to the Northwest" +
+                        Environment.NewLine + " - the Landing is Up" +
+                        Environment.NewLine + "You have found 3 of 5 opponents: Joe, Bob, Jimmy",
+            gameController.Status);
 
-        /// <summary>
-        /// A prompt to display to the player
-        /// </summary>
-        public string Prompt => $"{MoveNumber}: Which direction do you want to go (or type 'check'): ";
-        
-        /// <summary>
-        /// A Dictionary to keep track of the opponent locations
-        /// </summary>
-        private Dictionary<string, string> opponentLocations = new Dictionary<string, string>();
+        // Clean up your temporary file
+        File.Delete(filename);
+        Assert.IsTrue(!File.Exists(filename));
+    }
 
-        public GameController()
-        {
-            House.ClearHidingPlaces();
-            foreach (var opponent in Opponents)
-                opponentLocations.Add(opponent.Name, opponent.Hide().Name);
-
-            CurrentLocation = House.Entry;
-        }
-
-        /// <summary>
-        /// Move to the location in a direction
-        /// </summary>
-        /// <param name="direction"></param>
-        /// <returns></returns>
-        public bool Move(Direction direction)
-        {
-            var oldLocation = CurrentLocation;
-            CurrentLocation = CurrentLocation.GetExit(direction);
-            return (oldLocation != CurrentLocation);
-        }
-
-        /// <summary>
-        /// Parses input from the player and updates the status
-        /// </summary>
-        /// <param name="input">Input to parse</param>
-        /// <returns>The results of parsing the input</returns>
-        public string ParseInput(string input)
-        {
-            var results = "That's not a valid direction";
-
-            if (input.ToLower().StartsWith("save "))
-            {
-                var filename = input.Substring(5);
-                results = Save(filename);
-            }
-            else if (input.ToLower().StartsWith("load "))
-            {
-                var filename = input.Substring(5);
-                results = Load(filename);
-            }
-            else if (input.ToLower() == "check")
-            {
-                MoveNumber++;
-                if (CurrentLocation is LocationWithHidingPlace locationWithHidingPlace)
-                {
-                    var found = locationWithHidingPlace.CheckHidingPlace();
-                    if (found.Count() == 0)
-                        results = $"Nobody was hiding {locationWithHidingPlace.HidingPlace}";
-                    else
-                    {
-                        foundOpponents.AddRange(found);
-                        var s = found.Count() == 1 ? "" : "s";
-                        results = $"You found {found.Count()} opponent{s} hiding {locationWithHidingPlace.HidingPlace}";
-                    }
-                }
-                else
-                {
-                    results = $"There is no hiding place in the {CurrentLocation}";
-                }
-            }
-
-            else if (Enum.TryParse(typeof(Direction), input, out object direction))
-            {
-                if (!Move((Direction)direction))
-                    results = "There's no exit in that direction";
-                else
-                {
-                    MoveNumber++;
-                    results = $"Moving {direction}";
-                }
-            }
-            return results;
-        }
-
-        /// <summary>
-        /// Save a game to a file
-        /// </summary>
-        /// <param name="filename">Name of the file (without extension)</param>
-        /// <returns>Results of the save to display to the player</returns>
-        public string Save(string filename)
-        {
-            if (filename.Contains("/") || filename.Contains("\\") || filename.Contains(" "))
-                return "Please enter a filename without slashes or spaces.";
-            else {
-                var savedGame = new SavedGame()
-                {
-                    PlayerLocation = CurrentLocation.Name,
-                    OpponentLocations = opponentLocations,
-                    FoundOpponents = foundOpponents.Select(opponent => opponent.Name).ToList(),
-                    MoveNumber = this.MoveNumber,
-                };
-
-                var json = JsonSerializer.Serialize<SavedGame>(savedGame);
-                File.WriteAllText($"{filename}.json", json);
-                return $"Saved current game to {filename}";
-            }
-        }
-
-        /// <summary>
-        /// Load a game from a file
-        /// </summary>
-        /// <param name="filename">Name of the file (without extension)</param>
-        /// <returns>Results of the save to display to the player</returns>
-        public string Load(string filename)
-        {
-            if (filename.Contains("/") || filename.Contains("\\") || filename.Contains(" "))
-                return "Please enter a filename without slashes or spaces.";
-            else if (!File.Exists($"{filename}.json"))
-                return "That save file does not exist.";
-            else
-            {
-                var json = File.ReadAllText($"{filename}.json");
-                var savedGame = JsonSerializer.Deserialize<SavedGame>(json);
-                House.ClearHidingPlaces();
-                CurrentLocation = House.GetLocationByName(savedGame.PlayerLocation);
-                foreach (var opponentName in savedGame.OpponentLocations.Keys)
-                {
-                    var opponent = new Opponent(opponentName);
-                    var locationName = savedGame.OpponentLocations[opponentName];
-                    if (House.GetLocationByName(locationName) is LocationWithHidingPlace location)
-                        location.Hide(opponent);
-                }
-                foundOpponents.Clear();
-                foundOpponents.AddRange(savedGame.FoundOpponents.Select(name => new Opponent(name)));
-                MoveNumber = savedGame.MoveNumber;
-                return $"Loaded game from {filename}";
-            }
-        }
-
+    [TestMethod]
+    public void TestInvalidFilenames()
+    {
+        Assert.AreEqual("Please enter a filename without slashes or spaces.", gameController.Save("invalid\\filename"));
+        Assert.AreEqual("Please enter a filename without slashes or spaces.", gameController.Save("invalid/filename"));
+        Assert.AreEqual("Please enter a filename without slashes or spaces.", gameController.Save("invalid filename"));
     }
 }
