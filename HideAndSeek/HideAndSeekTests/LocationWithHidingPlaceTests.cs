@@ -18,7 +18,7 @@ public class LocationWithHidingPlaceTests
         var opponent2 = new Opponent("Opponent2");
         hidingLocation.Hide(opponent1);
         hidingLocation.Hide(opponent2);
-        CollectionAssert.AreEqual(new List<Opponent>() { opponent1, opponent2 },
+        CollectionAssert.AreEqual(new List<Opponent> { opponent1, opponent2 },
             hidingLocation.CheckHidingPlace().ToList());
 // The hiding place should now be empty
         CollectionAssert.AreEqual(new List<Opponent>(),
