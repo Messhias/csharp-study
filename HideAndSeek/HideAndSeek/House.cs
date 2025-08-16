@@ -15,18 +15,18 @@ public static class House
     {
         Entry = new Location("Entry");
         var hallway = new Location("Hallway");
-        var livingRoom = new Location("Living Room");
-        var kitchen = new Location("Kitchen");
-        var bathroom = new Location("Bathroom");
+        var livingRoom = new LocationWithHidingPlace("Living Room", "behind the sofa");
+        var kitchen = new LocationWithHidingPlace("Kitchen", "next to the stove");
+        var bathroom = new LocationWithHidingPlace("Bathroom", "behind the door");
         var landing = new Location("Landing");
-        var masterBedroom = new Location("Master Bedroom");
-        var masterBath = new Location("Master Bath");
-        var secondBathroom = new Location("Second Bathroom");
-        var kidsRoom = new Location("Kids Room");
-        var nursery = new Location("Nursery");
-        var pantry = new Location("Pantry");
-        var attic = new Location("Attic");
-        var garage = new Location("Garage");
+        var masterBedroom = new LocationWithHidingPlace("Master Bedroom", "in the closet");
+        var masterBath = new LocationWithHidingPlace("Master Bath", "in the bathtub");
+        var secondBathroom = new LocationWithHidingPlace("Second Bathroom", "in the shower");
+        var kidsRoom = new LocationWithHidingPlace("Kids Room", "under the bed");
+        var nursery = new LocationWithHidingPlace("Nursery", "under the crib");
+        var pantry = new LocationWithHidingPlace("Pantry", "inside a cabinet");
+        var attic = new LocationWithHidingPlace("Attic", "in a trunk");
+        var garage = new LocationWithHidingPlace("Garage", "behind the car");
 
         EntrySetup(hallway, garage);
         HallwaySetup(hallway, kitchen, bathroom, livingRoom, landing);
@@ -97,4 +97,15 @@ public static class House
             .OrderBy(o => o.Value.Name)
             .Skip(Random.Next(0, exit.ExitList.Count()))
             .First().Value;
+
+    public static void ClearHidingPlaces()
+    {
+        foreach (var location in Locations)
+        {
+            if (location is LocationWithHidingPlace locationWithHidingPlace)
+            {
+                locationWithHidingPlace.CheckHidingPlace();
+            }
+        }
+    }
 }
