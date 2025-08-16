@@ -3,6 +3,33 @@ namespace HideAndSeek;
 public class GameController
 {
     /// <summary>
+    /// The number of moves the player has made
+    /// </summary>
+    public int MoveNumber { get; private set; } = 1;
+    
+    /// <summary>
+    /// Private list of opponents the player needs to find
+    /// </summary>
+    public readonly IEnumerable<Opponent> Opponents = new List<Opponent>
+    {
+        new("Joe"),
+        new("Bob"),
+        new("Ana"),
+        new("Owen"),
+        new("Jimmy"),
+    };
+    
+    /// <summary>
+    /// Private list of opponents the player has found so far
+    /// </summary>
+    private readonly List<Opponent> _foundOpponents = new();
+
+    /// <summary>
+    /// Returns true if the game is over
+    /// </summary>
+    public bool GameOver => Opponents.Count() == _foundOpponents.Count();
+    
+    /// <summary>
     /// The player's current location in the house
     /// </summary>
     public Location CurrentLocation { get; private set; }
@@ -16,10 +43,15 @@ public class GameController
     /// <summary>
     /// A prompt to display to the player
     /// </summary>
-    public string Prompt => "Which direction do you want to go: ";
+    public string Prompt => $"{MoveNumber}: Which direction do you want to go (or type 'check'): ";
 
     public GameController()
     {
+        House.ClearHidingPlaces();
+        foreach (var opponent in Opponents)
+        {
+            opponent.Hide();
+        }
         CurrentLocation = House.Entry;
     }
 
