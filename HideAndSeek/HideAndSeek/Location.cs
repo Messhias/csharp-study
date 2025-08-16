@@ -10,7 +10,7 @@ public class Location
     /// <summary>
     /// The exits out of this location
     /// </summary>
-    private IDictionary<Direction, Location> Exits { get; } = new Dictionary<Direction, Location>();
+    internal IDictionary<Direction, Location> Exits { get; } = new Dictionary<Direction, Location>();
 
     /// <summary>
     /// </summary>

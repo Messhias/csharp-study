@@ -2,7 +2,14 @@ namespace HideAndSeek;
 
 public static class House
 {
-    public static Location Entry;
+    public static readonly Location Entry;
+
+    /// <summary>
+    /// Private collection of locations in the house
+    /// </summary>
+    private static readonly IEnumerable<Location> Locations;
+
+    public static Random Random = new();
 
     static House()
     {
@@ -24,11 +31,31 @@ public static class House
         EntrySetup(hallway, garage);
         HallwaySetup(hallway, kitchen, bathroom, livingRoom, landing);
         LandingSetup(landing, masterBedroom, secondBathroom, nursery, pantry, kidsRoom, attic);
-        
+
         masterBedroom.AddExit(Direction.East, masterBath);
+
+        Locations = new List<Location>
+        {
+            Entry,
+            hallway,
+            kitchen,
+            bathroom,
+            livingRoom,
+            landing,
+            masterBedroom,
+            secondBathroom,
+            kidsRoom,
+            nursery,
+            pantry,
+            attic,
+            garage,
+            attic,
+            masterBath,
+        };
     }
 
-    private static void LandingSetup(Location landing, Location masterBedroom, Location secondBathroom, Location nursery,
+    private static void LandingSetup(Location landing, Location masterBedroom, Location secondBathroom,
+        Location nursery,
         Location pantry, Location kidsRoom, Location attic)
     {
         landing.AddExit(Direction.Northwest, masterBedroom);
@@ -53,4 +80,21 @@ public static class House
         Entry.AddExit(Direction.East, hallway);
         Entry.AddExit(Direction.Out, garage);
     }
+
+    public static Location GetLocationByName(string name) => (
+        Locations.Where(l => l.Name == name) as Location[] ??
+        Locations.Where(l => l.Name == name).ToArray()
+    ).ToList().Count != 0
+        ? (
+            Locations.Where(l => l.Name == name) as Location[] ??
+            Locations.Where(l => l.Name == name).ToArray()
+        ).ToList().First()
+        : Entry;
+
+    public static Location RandomExit(Location exit) =>
+        GetLocationByName(exit.Name)
+            .Exits
+            .OrderBy(o => o.Value.Name)
+            .Skip(Random.Next(0, exit.ExitList.Count()))
+            .First().Value;
 }
